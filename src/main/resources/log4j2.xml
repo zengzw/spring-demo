@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4j2 配置 -->
+<configuration status="WARN">
+	<properties>
+		<property name="defaultLogSize">${log.size.default}</property>
+	</properties>
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="[%d{HH:mm:ss.SSS}] [%t] %-5level %c{1} - %msg%n"/>
+    </Console>
+    
+    
+    
+      <!-- 异步邮件发送 -->
+      <SMTP name="Mail" bufferSize="1024" smtpHost="smtp.163.com" subject="${log.mail.subject}" SMTPUsername="${log.mail.username}" SMTPPassword="${log.mail.password}" 
+      	from="${log.mail.from}" to="${log.mail.to}" cc="${log.mail.cc}" >  
+      </SMTP>
+      <Async name="AsyncMail">
+      	<AppenderRef ref="Mail"/>
+      </Async>
+      
+       <RollingFile name="springframework" fileName="${log.dir}/springframework.log" filePattern="${log.dir}/springframework-%d{yyyyMMdd}-%i.log" immediateFlush="true" >  
+          <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}][%p]%m[%c]%n"/>
+          <SizeBasedTriggeringPolicy size="${defaultLogSize}"   />  
+      </RollingFile>
+  </appenders>
+  
+  
+  <loggers>
+  	<root level="${log.root.level}">
+      <appender-ref ref="Console"/>
+      <appender-ref ref="JieMai-File" />
+      <appender-ref ref="JieMai-Error" level="error" />
+      <appender-ref ref="AsyncMail" level="${log.mail.level}" />
+    </root>
+    
+ 	<logger name="org.springframework" level="info" additivity="false">
+	   	<appender-ref ref="Console"/>
+	   	<appender-ref ref="springframework"/>
+   	</logger>
+  </loggers>
+  
+</configuration>
