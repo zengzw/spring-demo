@@ -17,6 +17,34 @@
 	<mvc:annotation-driven validator="validator" />
 	<aop:aspectj-autoproxy />
 
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<!-- <value>text/plain;charset=UTF-8</value> -->
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.http.converter.ResourceHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.SourceHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+			</list>
+		</property>
+	</bean>
 
 	<!-- 加载配置配置文件，这样可以在xml中读取配置文件内容 -->
 	<bean id="propertyConfigurer"
@@ -34,34 +62,18 @@
 	<!-- 拦截器 -->
 	<bean name="myIntercepter" class="com.test.springmvc.intercept.MyIntercepter" />
 
-<!-- 
-	<bean id="cacheServiceProxy"
-		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-		<property name="beanNames">
-			<list>
-				<value>*Service</value>
-			</list>
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>methodPointCut</value>
-			</list>
-		</property>
-	</bean> -->
+	<!-- <bean id="cacheServiceProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"> 
+		<property name="beanNames"> <list> <value>*Service</value> </list> </property> 
+		<property name="interceptorNames"> <list> <value>methodPointCut</value> </list> 
+		</property> </bean> -->
 
 
 	<!-- 定义切入点 -->
-<!-- 	<bean id="methodPointCut"
-		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice" ref="myIntercepter"></property>
-		.表示符合任何单一字元 +表示符合前一个字元一次或多次
-		*表示符合前一个字元零次或多次 \Escape任何Regular expression使用到的符号 .*表示前面的前缀(包括包名) 表示print方法
-		<property name="patterns">
-			<list>
-				<value>${printMethod}</value>
-			</list>
-		</property>
-	</bean> -->
+	<!-- <bean id="methodPointCut" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"> 
+		<property name="advice" ref="myIntercepter"></property> .表示符合任何单一字元 +表示符合前一个字元一次或多次 
+		*表示符合前一个字元零次或多次 \Escape任何Regular expression使用到的符号 .*表示前面的前缀(包括包名) 表示print方法 
+		<property name="patterns"> <list> <value>${printMethod}</value> </list> </property> 
+		</bean> -->
 
 
 

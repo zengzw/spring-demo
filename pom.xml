@@ -35,6 +35,67 @@
 			</exclusions>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/xstream/xstream -->
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>

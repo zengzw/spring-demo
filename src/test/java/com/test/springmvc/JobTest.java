@@ -15,7 +15,7 @@ import com.test.qz.job.util.TaskJobUtils;
 /**
  * Unit test for simple App.
  */
-public class AppTest  extends TestWithSpring
+public class JobTest  extends TestWithSpring
 {
     
     @Autowired

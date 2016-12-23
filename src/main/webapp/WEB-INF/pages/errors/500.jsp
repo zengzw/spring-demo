@@ -61,7 +61,7 @@
 			</div>	
 	</body>
 	<script>
-	 (function() {
+	/*  (function() {
         var num=document.querySelector('.time-home-color'),
             time=5,
             timeout,
@@ -79,6 +79,6 @@
             hash=location.hash;                
         },1000);
        
-    }());
+    }()); */
 	</script>
 </html>

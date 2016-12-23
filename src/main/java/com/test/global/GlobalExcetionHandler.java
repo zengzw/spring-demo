@@ -32,12 +32,12 @@ import com.test.base.exception.BusinessRuntimeException;
 @ControllerAdvice
 public class GlobalExcetionHandler {
 
-    @ExceptionHandler(BusinessRuntimeException.class)
+/*    @ExceptionHandler(BusinessRuntimeException.class)
     public Object businessRuntimeExceptionHandeler(BusinessRuntimeException ex,HttpServletResponse response){
 
-        /*    System.out.println("--------------------------------"+ex.getErrMsg()+" : "+ex.getErrCode());
+            System.out.println("--------------------------------"+ex.getErrMsg()+" : "+ex.getErrCode());
         ModelAndView model = new ModelAndView("errors/500");
-        model.addObject("errMsg", "this is Exception.class");*/
+        model.addObject("errMsg", "this is Exception.class");
         System.out.println("--------------------------------"+ex.getErrMsg()+" : "+ex.getErrCode());
         Map<String, Object> maps = new HashMap<String, Object>();
         maps.put("kktalk", "kktalk1");
@@ -70,6 +70,6 @@ public class GlobalExcetionHandler {
         return model;
 
     }
-
+*/
 
 }
