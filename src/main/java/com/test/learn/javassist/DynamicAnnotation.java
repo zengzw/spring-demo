@@ -2,7 +2,7 @@
  * Copyright (c) 2013, FPX and/or its affiliates. All rights reserved.
  * Use, Copy is subject to authorized license.
  */
-package com.test.annotation;
+package com.test.learn.javassist;
 
 import java.io.File;
 import java.io.IOException;
@@ -198,14 +198,15 @@ public class DynamicAnnotation {
      * @throws InstantiationException 
      */
     public static void addJSONAnnotation() throws NotFoundException, IOException, CannotCompileException, InstantiationException, IllegalAccessException{
-        ClassPool pool =  ClassPool.getDefault();
+        
+      /*  JSONTest test = new JSONTest();
+        test.name="ddd";
+        test.age=21;
+        System.out.println(JSON.toJSONString(test));*/
+        
+        ClassPool pool =  ClassPool.getDefault(); 
         CtClass ctClass = pool.get("com.test.annotation.JSONTest");
 
-        Class<JSONTest> clz = ctClass.toClass();
-        System.out.println(clz.getName());
-        Object object = clz.newInstance();
-        System.out.println(JSON.toJSONString(object));
-        ctClass.defrost();
 
         ClassFile classFile = ctClass.getClassFile();
         ConstPool constPool = classFile.getConstPool();
@@ -225,12 +226,11 @@ public class DynamicAnnotation {
         System.out.println(">>>"+method.getName());
         method.getMethodInfo().addAttribute(annotationsAttribute);
 
-
-
-
-      
-        System.out.println(JSON.toJSONString(clz.newInstance()));
-
+        Class<JSONTest> clz = ctClass.toClass();
+        System.out.println(clz.getName());
+        Object object = clz.newInstance();
+        System.out.println(JSON.toJSONString(object));
+        ctClass.defrost(); //解冻
 
     /*    CtField[] ctFields = ctClass.getFields();
         for(CtField ctField : ctFields){ //field 不能private

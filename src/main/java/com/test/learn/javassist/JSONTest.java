@@ -2,7 +2,7 @@
  * Copyright (c) 2013, FPX and/or its affiliates. All rights reserved.
  * Use, Copy is subject to authorized license.
  */
-package com.test.annotation;
+package com.test.learn.javassist;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
