@@ -52,17 +52,20 @@ public class WordCountSpout extends BaseRichSpout {
      */
     @Override
     public void nextTuple() {
-        File file = new File(filePath);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+      
         try {
+            File file = new File(filePath);
             List<String> lstString = FileUtils.readLines(file);
             for(String content:lstString){
                 collector.emit(new Values(content));
             }
             
+            FileUtils.moveFile(file, new File(file.getPath() + System.currentTimeMillis() + ".bak"));
         } catch (IOException e) {
-            e.printStackTrace();
+           
         }
-        
+    
 
     }
 

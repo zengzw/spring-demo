@@ -22,7 +22,7 @@ public class PrintBolt extends BaseRichBolt{
     
     @Override
     public void execute(Tuple tuple) {
-        System.out.println(tuple.getString(0)+":"+tuple.getInteger(1));
+        System.out.println("print---------------"+tuple.getString(0)+":"+tuple.getInteger(1));
         
     }
 

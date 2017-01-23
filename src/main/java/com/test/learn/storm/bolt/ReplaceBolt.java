@@ -15,6 +15,8 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
+import com.test.springmvc.utils.StringUtils;
+
 /**
  * 处理特殊字符
  * 
@@ -34,10 +36,14 @@ public class ReplaceBolt extends BaseRichBolt{
     public void execute(Tuple tuple) {
         
         String contentx = tuple.getStringByField("sentence");
-        contentx = contentx.replaceAll("\"", "").replace("\\.", "").replace("\\:", "");
+        if(StringUtils.isEmpty(contentx)){
+            return;
+        }
+        
+        contentx = contentx.replaceAll("\"", "").replaceAll("\\.", "").replaceAll("\\:", "");
+        System.out.println("replace--------------"+contentx);
         outputCollector.emit(new Values(contentx));
         
-        outputCollector.ack(tuple);
     }
 
     @Override

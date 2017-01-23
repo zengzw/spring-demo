@@ -12,6 +12,7 @@ import org.apache.storm.tuple.Fields;
 import com.test.learn.storm.bolt.CountBolt;
 import com.test.learn.storm.bolt.PrintBolt;
 import com.test.learn.storm.bolt.ReplaceBolt;
+import com.test.learn.storm.bolt.SplitBolt;
 import com.test.learn.storm.spout.WordCountSpout;
 
 /**
@@ -21,20 +22,22 @@ import com.test.learn.storm.spout.WordCountSpout;
  */
 public class WordCountTopology {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TopologyBuilder builder = new TopologyBuilder();  
-        builder.setSpout("wordCountSpout", new WordCountSpout(),2);
-        builder.setBolt("replaceBolt",new ReplaceBolt(),2).shuffleGrouping("wordCountSpout");
-        builder.setBolt("splitBolt", new ReplaceBolt(),2).shuffleGrouping("replaceBolt");
-        builder.setBolt("countBolt", new CountBolt(),1).fieldsGrouping("splitBolt", new Fields("replaceFiled"));
+        builder.setSpout("wordCountSpout", new WordCountSpout(),1);
+        builder.setBolt("replaceBolt",new ReplaceBolt(),1).shuffleGrouping("wordCountSpout");
+        builder.setBolt("splitBolt", new SplitBolt(),1).shuffleGrouping("replaceBolt");
+      builder.setBolt("countBolt", new CountBolt(),1).fieldsGrouping("splitBolt", new Fields("split"));
         builder.setBolt("print",new PrintBolt()).shuffleGrouping("countBolt");
 
         
         Config config = new Config();  
-        config.setDebug(true);  
-        config.put("filePath", "D://text.txt");
+        config.setDebug(false);  
+        config.put("filePath", "D://test.txt");
         
         LocalCluster cluster = new LocalCluster();
         cluster.submitTopology("WordCount", config, builder.createTopology());
+        
+        
     }
 }
