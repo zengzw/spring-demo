@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.2.1</version>
+			<version>4.5.3</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -258,7 +258,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.3</version>
+			<version>3.5</version>
 		</dependency>
 
 		<dependency>
@@ -316,14 +316,19 @@
 			<artifactId>storm-core</artifactId>
 			<version>1.0.2</version>
 		</dependency>
-<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-<dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.7.3</version>
-</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.26</version>
+		</dependency>
 
 	</dependencies>
 

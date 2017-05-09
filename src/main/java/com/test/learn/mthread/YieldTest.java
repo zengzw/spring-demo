@@ -32,13 +32,14 @@ public class YieldTest {
     public static void main(String[] a){
         YieldTest yieldTest = new YieldTest();
         ThreadTest test1 =  yieldTest.new ThreadTest();
+            
+        
         test1.setName("001");
         ThreadTest test2 = yieldTest.new ThreadTest();
         test2.setName("002");
         
         test1.start();
         test2.start();
-        
         
     }
 }

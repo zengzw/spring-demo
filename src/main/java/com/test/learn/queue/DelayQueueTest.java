@@ -5,6 +5,8 @@
 package com.test.learn.queue;
 
 /**
+ *  一种有序的队列，特点是只有在队列中的元素到期后才能取出数据。
+ *  
  *
  * @author zengzw
  * @date 2017年1月23日

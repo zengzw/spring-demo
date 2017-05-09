@@ -50,12 +50,16 @@ public class Test3 {
                     this.sleep(1000);
                     i++;
                 }
+                
+                userKey.signal();
+                System.out.println("---customer 休息够了，叫其他人使用！");
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }finally{
+                lock.unlock();
+                System.out.println("--customer 释放lock");
             }
-            userKey.signal();
-            System.out.println("---customer 休息够了，叫其他人使用！");
-            lock.unlock();
+         
 
         }
     }
@@ -80,6 +84,7 @@ public class Test3 {
                 e.printStackTrace();
             }finally{
                 lock.unlock();
+                System.out.println("----produce 释放lock");
             }
 
         }

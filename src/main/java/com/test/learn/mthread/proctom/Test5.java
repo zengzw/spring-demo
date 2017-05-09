@@ -26,6 +26,7 @@ public class Test5 {
             while(list.size() == 0){
                 try {
                     wait(); //阻塞当前线程
+                    System.out.println("getEgg -- 为空，等待");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -46,6 +47,7 @@ public class Test5 {
             while(list.size() > 0){
                 try {
                     wait();
+                    System.out.println("add egg > 0 ，等待");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

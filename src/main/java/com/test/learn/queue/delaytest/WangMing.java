@@ -41,6 +41,7 @@ public class WangMing implements Delayed{
 
     @Override
     public int compareTo(Delayed o) {
+//        System.out.println("------compareTo");
         WangMing wangMing = (WangMing)o;
         long end = endTime - wangMing.endTime;
 
@@ -62,7 +63,10 @@ public class WangMing implements Delayed{
      */  
     @Override
     public long getDelay(TimeUnit unit) {
-        return endTime -  System.currentTimeMillis();
+        long currentTime =  endTime -  System.currentTimeMillis();
+//        System.out.println("-----getDelay:"+currentTime);
+        
+        return currentTime;
     }
 
 
@@ -89,5 +93,6 @@ public class WangMing implements Delayed{
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

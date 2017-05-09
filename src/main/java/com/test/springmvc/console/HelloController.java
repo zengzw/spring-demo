@@ -1,17 +1,23 @@
 package com.test.springmvc.console;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.storm.command.list;
+import org.apache.storm.shade.hiccup.form_helpers__init;
+import org.hibernate.validator.internal.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -21,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.test.base.ResponseError;
 import com.test.base.ResponseMessage;
 import com.test.base.constants.BaseController;
@@ -30,19 +37,78 @@ import com.test.springmvc.group.Second;
 import com.test.springmvc.model.User;
 import com.test.springmvc.model.UserMulti;
 import com.test.springmvc.service.IUserService;
-import com.test.springmvc.utils.SingUtil;
 
 @Controller
+@Scope("singleton")
 public class HelloController extends BaseController{
 
     @Autowired
     IUserService userService;
+    
+    ThreadLocal<String> threadLocal = new ThreadLocal<String>();
+    
+    private static int count = 1;
 
     @RequestMapping(value="/welcome",method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "Spring 3 MVC Hello World");
+    public String printWelcome(ModelMap model) throws InterruptedException {
+        String name = Thread.currentThread().getName();
+        if(name.equals("qtp1196730970-58")){
+            System.out.println("-----休息5秒");
+          
+            Thread.sleep(5000);
+        }
+        
+        if(threadLocal.get() == null){
+            String value = name + RandomStringUtils.randomAlphabetic(5);
+            System.out.println("------"+name +" is null,setting value!"+value);
+            threadLocal.set(value);
+        }else{
+            System.out.println("-------"+name+" get value:"+threadLocal.get());
+        }
+       
+        model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
+        threadLocal.remove();
+        System.out.println("||||||||||||"+name+" :"+threadLocal.get());
+        
         return "hello";
 
+    }
+    
+    
+    @RequestMapping(value="/test1",method = RequestMethod.GET)
+    public String test1(ModelMap model) throws InterruptedException {
+        String name = Thread.currentThread().getName();
+        List<String> list = new ArrayList<String>();
+        if(20 % count == 2){
+            list.add("loop");
+        }else if(20 % count == 0){
+            list.add("test");
+        }     
+        
+        list.add(name);
+        ServiceProviderManager.add(list);
+        
+        count++;
+        System.out.println("count: "+ count + "   " + JSON.toJSONString(list));
+        RechargeManager.reacharge(name);
+        
+        model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
+     
+        System.out.println("-------------------------------------------------");
+        return "hello";
+        
+    }
+    @RequestMapping(value="/test",method = RequestMethod.GET)
+    public String test(ModelMap model) {
+        String name = Thread.currentThread().getName();
+        for(int i = 0; i<3; i++){
+            count ++;
+        }
+        System.out.println(name +" count:"+count);
+        model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
+        threadLocal.remove();
+        return "hello";
+        
     }
 
     private static String token = "phoenixtea";

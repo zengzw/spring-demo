@@ -58,7 +58,7 @@ public class WangBa implements Runnable{
         Thread thread = new Thread(wangBa);
         thread.start();
         
-        wangBa.shangji("Lucy", "444444444444",4);
+        wangBa.shangji("Lucy", "444444444444",2);
         wangBa.shangji("Tom", "5555555555555",5);
         wangBa.shangji("Jim", "111111111111",1);
         
