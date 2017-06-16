@@ -4,13 +4,6 @@
  */
 package com.test.springmvc;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-
 /**
  *
  * @author zengzw
@@ -18,8 +11,28 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
  */
 public class Htmlunit {
  
-
+    public volatile int inc = 0;
+    
+    public void increase() {
+        inc++;
+    }
+ 
     public static void main(String[] args) {
-        System.out.println(System.getProperty("java.version"));
+        final Htmlunit test = new Htmlunit();
+        for(int i=0;i<10;i++){
+            new Thread(){
+                public void run() {
+                    for(int j=0;j<1000;j++)
+                        test.increase();
+                };
+            }.start();
+        }
+ 
+        System.out.println(Thread.activeCount());
+        while(Thread.activeCount()>1)  //保证前面的线程都执行完
+            Thread.yield();
+        
+        
+        System.out.println(test.inc);
     }
 }

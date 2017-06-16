@@ -17,6 +17,10 @@
 	<mvc:annotation-driven validator="validator" />
 	<aop:aspectj-autoproxy />
 
+	<bean id="testUser" class="com.test.springmvc.model.TestUser">
+		<property  name="age" value="22"></property>
+	</bean>
+	
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">

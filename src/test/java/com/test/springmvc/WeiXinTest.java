@@ -4,13 +4,21 @@
  */
 package com.test.springmvc;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 
 import com.alibaba.fastjson.JSON;
+import com.test.springmvc.model.User;
 import com.test.springmvc.model.weixin.AccessToken;
 import com.test.springmvc.service.WeiXinService;
 import com.test.springmvc.utils.HttpUtils;
+
+import clojure.lang.Obj;
 
 /**
  *
@@ -74,5 +82,13 @@ public class WeiXinTest{
 //        HttpUtils.doGet("http://phoenixtea.oicp.net/weixin", null);
         HttpUtils.doPost("http://phoenixtea.oicp.net/weixin", null);
     }
-
+    
+    
+    public static void main(String[] args) {
+     
+//        System.out.println(Thread.currentThread().getContextClassLoader().g   et);
+        
+        List<? super Number> list1 = new ArrayList<Number>();
+        list1.add(2);
+    }
 }

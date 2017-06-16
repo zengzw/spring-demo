@@ -324,10 +324,32 @@
 			<version>1.7.3</version>
 		</dependency>
 
+<!-- 		<dependency> -->
+<!-- 			<groupId>net.sourceforge.htmlunit</groupId> -->
+<!-- 			<artifactId>htmlunit</artifactId> -->
+<!-- 			<version>2.26</version> -->
+<!-- 		</dependency> -->
+
 		<dependency>
-			<groupId>net.sourceforge.htmlunit</groupId>
-			<artifactId>htmlunit</artifactId>
-			<version>2.26</version>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.miemiedev</groupId>
+			<artifactId>mybatis-paginator</artifactId>
+			<version>1.2.15</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
 		</dependency>
 
 	</dependencies>

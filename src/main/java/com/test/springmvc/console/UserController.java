@@ -24,6 +24,7 @@ import com.test.springmvc.model.User;
  * @date 2014年10月11日
  */
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @RequestMapping("/test")
