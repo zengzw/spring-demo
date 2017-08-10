@@ -6,24 +6,27 @@ package com.test.learn.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
+
+import clojure.lang.Obj;
 
 
 /**
  *
  * @author zengzw
+ * @param <T>
  * @date 2017年2月20日
  */
-public class LogProxy implements InvocationHandler{
+public class LogProxy<T> implements InvocationHandler{
 
-    private Object targetObject;
+    private T targetObject;
 
 
-    public LogProxy(Object object){
+    public LogProxy(T object){
         this.targetObject = object;
     }
-
 
 
 
@@ -35,18 +38,11 @@ public class LogProxy implements InvocationHandler{
         return result;
     }
     
-    public  void kc(){
-        kb();
+    
+    public T getProxy(){
+        T newProxyInstance = (T) Proxy.newProxyInstance(targetObject.getClass().getClassLoader(), targetObject.getClass().getInterfaces(),this);
+        return newProxyInstance;
     }
     
-    public void kb(){
-        kc();
-    }
-    public static void main(String[] args) {
-       LogProxy logProxy = new LogProxy(new String());
-//       logProxy.kb();
-       while(true){
-           System.out.println("-----------");
-       }
-    }   
+    
 }

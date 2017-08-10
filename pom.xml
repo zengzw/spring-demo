@@ -12,10 +12,12 @@
 	<properties>
 		<spring.version>4.0.4.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java-version>1.6</java-version>
+		<java-version>1.7</java-version>
 		<org.springframework-version>4.0.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
+		<cglib.version>2.2.2</cglib.version>
+		<activemq.version>5.14.3</activemq.version>
 	</properties>
 
 
@@ -35,6 +37,12 @@
 			</exclusions>
 		</dependency>
 
+		<!-- CGLib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -324,11 +332,11 @@
 			<version>1.7.3</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>net.sourceforge.htmlunit</groupId> -->
-<!-- 			<artifactId>htmlunit</artifactId> -->
-<!-- 			<version>2.26</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>net.sourceforge.htmlunit</groupId> -->
+		<!-- <artifactId>htmlunit</artifactId> -->
+		<!-- <version>2.26</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -350,6 +358,42 @@
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>1.4.01</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<!-- Spring Data Redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+			<version>1.0.2.RELEASE</version>
+		</dependency>
+		<!-- Apache Commons Pool -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 
 	</dependencies>

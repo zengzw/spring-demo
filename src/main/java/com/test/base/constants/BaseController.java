@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.test.base.ResponseMessage;
@@ -21,8 +22,19 @@ import com.test.base.exception.BusinessRuntimeException;
  */
 public abstract class BaseController extends com.test.base.BaseController {
 
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+    }
+
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    HttpServletRequest request;
+    
     /**
      * 业务运行时异常
      * 

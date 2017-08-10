@@ -11,6 +11,21 @@ package com.test.springmvc;
  */
 public abstract class AbstractClass {
 
+    {
+        System.out.println(" A {}");
+    }
+    
+    static{
+        System.out.println(" Astatic {}");
+    }
+    
+    /**
+     * 
+     */
+    public AbstractClass() {
+     System.out.println("AbstractClass()");
+    }
+    
     public void testA(){
         System.out.println("abstract...");
     }

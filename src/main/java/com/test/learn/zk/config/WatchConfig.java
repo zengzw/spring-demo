@@ -5,11 +5,14 @@
 package com.test.learn.zk.config;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.ListIterator;
 
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
+
 
 /**
  *
@@ -22,7 +25,7 @@ public class WatchConfig implements Watcher{
     private static String ZK_URL = "172.16.1.190:2181" ;
     private static int timeout = 3000 ;
 
-    private static String root="/myConf";
+    private static String root="/myConf1";
     private static String urlNode =root+  "/url";
     private static String usernameNode =root+ "/username";
     private static String passwordNode =root+ "/password";
@@ -32,18 +35,34 @@ public class WatchConfig implements Watcher{
     public  String passwordValue ="/";
 
     ZooKeeper zkKeeper = null;
-    public ZooKeeper initZK() throws IOException, InterruptedException{
+    public ZooKeeper initZK() throws IOException, InterruptedException, KeeperException{
         zkKeeper= new ZooKeeper(ZK_URL, timeout,this);
         while(ZooKeeper.States.CONNECTED != zkKeeper.getState()){
             Thread.sleep(3000);
         }
         
-        zkKeeper.addAuthInfo("digest","test001".getBytes());
+        zkKeeper.addAuthInfo("digest","test001:test001".getBytes());
 
+        zkKeeper.getChildren(root, new nodeWatch());
         return zkKeeper;
 
     }
 
+ class nodeWatch implements Watcher{
+     @Override
+     public void process(WatchedEvent event) {
+         System.out.println("<<<<<<<----------"+event);
+         if(event.getType() == Watcher.Event.EventType.NodeChildrenChanged){
+             try {
+                List<String> ss = zkKeeper.getChildren(root, this);
+                ListIterator<String> listIterator = ss.listIterator();
+                System.out.println("result:"+ss);
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
+            }
+         }
+     }
+ }
 
     public void initValue() throws KeeperException, InterruptedException, IOException{
         if(zkKeeper != null){

@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.jms.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -44,9 +46,9 @@ public class HelloController extends BaseController{
 
     @Autowired
     IUserService userService;
-    
+
     ThreadLocal<String> threadLocal = new ThreadLocal<String>();
-    
+
     private static int count = 1;
 
     @RequestMapping(value="/welcome",method = RequestMethod.GET)
@@ -54,10 +56,17 @@ public class HelloController extends BaseController{
         String name = Thread.currentThread().getName();
         if(name.equals("qtp1196730970-58")){
             System.out.println("-----休息5秒");
+
           
-            Thread.sleep(5000);
         }
-        
+        HttpSession session = getRequest().getSession();
+        if(session.getAttribute("kktalk") == null){
+            System.out.println("-----set session ");
+            session.setAttribute("kktalk", "kktalk");
+        }else{
+            System.err.println("session get:"+session.getAttribute("kktalk"));
+        }
+
         if(threadLocal.get() == null){
             String value = name + RandomStringUtils.randomAlphabetic(5);
             System.out.println("------"+name +" is null,setting value!"+value);
@@ -65,16 +74,16 @@ public class HelloController extends BaseController{
         }else{
             System.out.println("-------"+name+" get value:"+threadLocal.get());
         }
-       
+
         model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
         threadLocal.remove();
         System.out.println("||||||||||||"+name+" :"+threadLocal.get());
-        
+
         return "hello";
 
     }
-    
-    
+
+
     @RequestMapping(value="/test1",method = RequestMethod.GET)
     public String test1(ModelMap model) throws InterruptedException {
         String name = Thread.currentThread().getName();
@@ -84,19 +93,19 @@ public class HelloController extends BaseController{
         }else if(20 % count == 0){
             list.add("test");
         }     
-        
+
         list.add(name);
         ServiceProviderManager.add(list);
-        
+
         count++;
         System.out.println("count: "+ count + "   " + JSON.toJSONString(list));
         RechargeManager.reacharge(name);
-        
+
         model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
-     
+
         System.out.println("-------------------------------------------------");
         return "hello";
-        
+
     }
     @RequestMapping(value="/test",method = RequestMethod.GET)
     public String test(ModelMap model) {
@@ -108,12 +117,12 @@ public class HelloController extends BaseController{
         model.addAttribute("message", "Spring 3 MVC Hello World:"+Thread.currentThread().getId());
         threadLocal.remove();
         return "hello";
-        
+
     }
 
     private static String token = "phoenixtea";
 
-   
+
 
     @RequestMapping(value="/successData",method = RequestMethod.GET)
     @ResponseBody

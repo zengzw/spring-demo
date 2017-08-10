@@ -16,11 +16,12 @@ public class ServiceLoaderTest {
 
     public static void main(String[] args) {
         ServiceLoader<SimpleServiceProvider> serviceLoader = ServiceLoader.load(SimpleServiceProvider.class);
-       Iterator iterator =  serviceLoader.iterator();
-       System.out.println(iterator.hasNext());
-       while(iterator.hasNext()){
-           SimpleServiceProvider provider = (SimpleServiceProvider) iterator.next();
-           provider.simpleService();
-       }
+        Iterator iterator =  serviceLoader.iterator();
+        
+        System.out.println(iterator.hasNext());
+        while(iterator.hasNext()){
+            SimpleServiceProvider provider = (SimpleServiceProvider) iterator.next();
+            provider.simpleService();
+        }
     }
 }

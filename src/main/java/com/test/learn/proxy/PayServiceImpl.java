@@ -6,6 +6,7 @@ package com.test.learn.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.math.BigDecimal;
 
 /**
  *
@@ -20,12 +21,23 @@ public class PayServiceImpl implements IPayServcie{
     }
 
     public static void main(String[] args) {
-        IPayServcie iPayServcie = new PayServiceImpl();
+        proxy2();
+        
+    }
+    
+    public  static void proxy1(){
+      IPayServcie iPayServcie = new PayServiceImpl();
         
         LogProxy proxy = new LogProxy(iPayServcie);
         
         IPayServcie iPayServcie2 = (IPayServcie)Proxy.newProxyInstance(iPayServcie.getClass().getClassLoader(), iPayServcie.getClass().getInterfaces(),proxy);
         System.err.println(iPayServcie2.pay("hello"));
+    }
+    
+    public  static void proxy2(){
+        LogProxy proxy = new LogProxy<IPayServcie>(new PayServiceImpl());
+        IPayServcie iPayServcie = (IPayServcie) proxy.getProxy();
+        System.err.println(iPayServcie.pay("hello"));
         
     }
 }

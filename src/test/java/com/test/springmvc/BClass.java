@@ -4,6 +4,10 @@
  */
 package com.test.springmvc;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  *
@@ -12,7 +16,26 @@ package com.test.springmvc;
  */
 public class BClass extends AbstractClass{
 
+    {
+        System.out.println(" B {}");
+    }
+
+    static{
+        System.out.println(" B static {}");
+    }
+
+    /**
+     * 
+     */
+    public BClass() {
+        System.out.println("BClass()");
+    }
+
     public static void main(String[] args) {
-        System.out.println( System.getSecurityManager());
+        AbstractClass cc = new BClass();
+        
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2,4,0,TimeUnit.HOURS,new ArrayBlockingQueue<Runnable>(10));
+    
+        
     }
 }

@@ -14,6 +14,8 @@ import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 
 /**
+ *  命令行访问时，添加认证：addauth digest test001:test001
+ *  
  *
  * @author zengzw
  * @date 2016年9月22日
@@ -48,7 +50,7 @@ public class SetConfig {
             }
             
             //验证
-           zooKeeper.addAuthInfo("digest","test001".getBytes());
+         zooKeeper.addAuthInfo("digest","test001:test001".getBytes());
             
             //创建节点，数据
             if(zooKeeper.exists(root, true) == null){

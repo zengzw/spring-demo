@@ -7,23 +7,34 @@ package com.test.springmvc.intercept;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.springframework.beans.factory.InitializingBean;
+
+import com.google.common.util.concurrent.RateLimiter;
 
 /**
- *
+ * 流量控制
+ * 
  * @author zengzw
  * @date 2016年5月9日
  */
 public class MyIntercepter implements MethodInterceptor{
 
 
+    RateLimiter rateLimiter = RateLimiter.create(10);
+
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-       
+
         System.out.println("----------"+invocation.getArguments());
         System.out.println("----------"+invocation.getMethod());
+        System.out.println("----------"+invocation.getMethod().getParameterTypes()[0]);
         System.out.println("-----------"+invocation.getThis().getClass());
-        return invocation.proceed();
+        if(rateLimiter.tryAcquire()){
+            System.out.println("----接收请求");
+            return invocation.proceed();
+        }else{
+            System.out.println("----放弃请求。。。。");
+            return "errors/404";
+        }
     }
 
 }
