@@ -122,20 +122,15 @@
 			<id></id>
 			<height>-1</height>
 			<width>-1</width>
-				<font_name>Microsoft YaHei UI</font_name>
+				<font_name></font_name>
 				<font_size>9</font_size>
 			<x>50</x>
 			<y>50</y>
-			<color>
-				<r>255</r>
-				<g>255</g>
-				<b>255</b>
-			</color>
 			<connections>
 			</connections>
 			<display>false</display>
 			<creation_date>2017-08-22 10:53:24</creation_date>
-			<updated_date>2017-08-22 14:57:41</updated_date>
+			<updated_date>2017-08-22 10:53:24</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -165,10 +160,6 @@
 			<primary_key_length_of_text>null</primary_key_length_of_text>
 		</table_properties>
 		<environment_setting>
-			<environment>
-				<id>0</id>
-				<name>Default</name>
-			</environment>
 		</environment_setting>
 	</settings>
 	<dictionary>
@@ -176,76 +167,6 @@
 	<tablespace_set>
 	</tablespace_set>
 	<contents>
-		<table>
-			<id>0</id>
-			<height>157</height>
-			<width>154</width>
-				<font_name>Microsoft YaHei UI</font_name>
-				<font_size>9</font_size>
-			<x>147</x>
-			<y>120</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-			</connections>
-			<physical_name>new_table</physical_name>
-			<logical_name>new_table</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-				<character_set></character_set>
-				<collation></collation>
-				<storage_engine></storage_engine>
-				<primary_key_length_of_text>null</primary_key_length_of_text>
-			</table_properties>
-		</table>
-		<table>
-			<id>1</id>
-			<height>75</height>
-			<width>120</width>
-				<font_name>Microsoft YaHei UI</font_name>
-				<font_size>9</font_size>
-			<x>181</x>
-			<y>336</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-			</connections>
-			<physical_name>new_table</physical_name>
-			<logical_name>new_table</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-				<character_set></character_set>
-				<collation></collation>
-				<storage_engine></storage_engine>
-				<primary_key_length_of_text>null</primary_key_length_of_text>
-			</table_properties>
-		</table>
 	</contents>
 	<column_groups>
 	</column_groups>
