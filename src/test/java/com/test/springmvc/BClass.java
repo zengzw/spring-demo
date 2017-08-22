@@ -7,7 +7,6 @@ package com.test.springmvc;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  *
@@ -17,7 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class BClass extends AbstractClass{
 
     {
-        System.out.println(" B {}");
+        System.out.println(" B {==}");
     }
 
     static{
