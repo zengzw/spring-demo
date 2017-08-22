@@ -4,8 +4,6 @@
  */
 package com.test.springmvc;
 
-import com.alibaba.fastjson.util.ServiceLoader;
-
 /**
  *
  * @author zengzw
@@ -15,6 +13,7 @@ public  class Catecute<T extends SubJob> {
 
 
     public static void main(String[] args) {
-
+    
+    	"a".equals("a");
     }
 }
