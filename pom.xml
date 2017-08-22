@@ -10,7 +10,7 @@
 
 
 	<properties>
-		<spring.version>4.0.4.RELEASE</spring.version>
+		<spring.version>4.1.7.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.0.2.RELEASE</org.springframework-version>
@@ -18,6 +18,22 @@
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<cglib.version>2.2.2</cglib.version>
 		<activemq.version>5.14.3</activemq.version>
+			<lts.version>1.6.8-beta1</lts.version>
+		<leveldbjni.version>1.8</leveldbjni.version>
+		<curator.version>2.9.1</curator.version>
+		<netty.version>4.0.20.Final</netty.version>
+		<dbutils.version>1.6</dbutils.version>
+		<druid.version>1.0.14</druid.version>
+		<mysql.version>5.1.26</mysql.version>
+		<sleepycat.version>5.0.73</sleepycat.version>
+		<rocksdbjni.version>3.10.1</rocksdbjni.version>
+		<mina.version>2.0.9</mina.version>
+		<hessian.version>4.0.38</hessian.version>
+		<mapdb.version>2.0-beta10</mapdb.version>
+		<groovy.version>2.4.5</groovy.version>
+		<jackson.version>2.6.3</jackson.version>
+		<aspectj.version>1.7.2</aspectj.version>
+		<quartz.version>2.2.2</quartz.version>
 	</properties>
 
 
@@ -284,7 +300,7 @@
 			<version>1.1.39</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>2.2.2</version>
@@ -293,7 +309,7 @@
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz-jobs</artifactId>
 			<version>2.2.2</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -405,6 +421,62 @@
 			<version>2.4.2</version>
 		</dependency>
 
+		<!-- lts statrt -->
+		<dependency>
+			<groupId>com.github.ltsopensource</groupId>
+			<artifactId>lts-jobtracker</artifactId>
+			<version>${lts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ltsopensource</groupId>
+			<artifactId>lts-tasktracker</artifactId>
+			<version>${lts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ltsopensource</groupId>
+			<artifactId>lts-jobclient</artifactId>
+			<version>${lts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ltsopensource</groupId>
+			<artifactId>lts-monitor</artifactId>
+			<version>${lts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ltsopensource</groupId>
+			<artifactId>lts-spring</artifactId>
+			<version>${lts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>${mina.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapdb</groupId>
+			<artifactId>mapdb</artifactId>
+			<version>${mapdb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>

@@ -191,10 +191,10 @@
 		<property name="messageSource" ref="messageSource" />
 	</bean>
 
-	<!-- spring quartz 整合 -->
+	<!--  spring quartz 整合 
 	<bean id="schedulerFactoryBean"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
-
+ -->
 	<!-- 消息国家化 -->
 	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
 		<property name="basename" value="/WEB-INF/configuration/messages" /> <property 
@@ -258,5 +258,44 @@ class="org.springframework.session.data.redis.config.annotation.web.http.RedisHt
 </bean>
     <!-- 让Spring Session不再执行config命令 -->
 <util:constant static-field="org.springframework.session.data.redis.config.ConfigureRedisAction.NO_OP"/>
+
+
+  <bean id="springbootChargeInfoQuartz" class="com.test.springmvc.LtsTask"/>
+
+    <bean id="springbootChargeInfoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="springboot_charge_info_group"/>
+        <property name="name" value="springboot_charge_info"/>
+        <property name="concurrent" value="false"/>
+        <property name="targetObject" ref="springbootChargeInfoQuartz"/>
+        <property name="targetMethod" value="autoRun"/>
+    </bean>
+
+    <bean id="springbootChargeInfoTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="group" value="springboot_charge_info_group"/>
+        <property name="name" value="springboot_charge_info"/>
+        <property name="jobDetail" ref="springbootChargeInfoJob"/>
+         <property name="cronExpression" value="0 */1 * * * ?"/>
+    </bean>
+
+    <bean id="raceCouponActivityScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="springbootChargeInfoTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.github.ltsopensource.spring.quartz.QuartzLTSProxyBean">
+        <property name="clusterName" value="tsh_lts_cluster"/>
+        <property name="registryAddress" value="zookeeper://172.16.1.190:2181,172.16.1.191:2181,172.16.1.192:2181,172.16.1.193:2181"/>
+        <property name="nodeGroup" value="spring_boot_timer"/>
+        <property name="configs">
+            <props>
+                <prop key="job.fail.store">mapdb</prop>
+            </props>
+        </property>
+    </bean>
+
+
 
 </beans>
