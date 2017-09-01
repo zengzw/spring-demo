@@ -4,6 +4,8 @@
  */
 package com.test.springmvc.model;
 
+import java.math.BigInteger;
+
 /**
  *
  * @author zengzw
@@ -30,4 +32,8 @@ public class TestUser {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public static void main(String[] args) {
+		BigInteger bigInteger = BigInteger.ZERO;
+	}
 }

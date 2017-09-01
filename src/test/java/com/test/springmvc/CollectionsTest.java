@@ -4,6 +4,7 @@
  */
 package com.test.springmvc;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,6 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+
+import org.springframework.context.ApplicationContext;
+
+import com.test.springmvc.model.User;
+
+import net.sf.cglib.reflect.FastClass;
 
 /**
  *
@@ -97,5 +104,10 @@ public class CollectionsTest {
         b2=new byte[1024*1024];
         b3=new byte[1024*1024];
         b4=new byte[1024*1024];*/
+        
+/*        ApplicationContext context = null;
+        context.getBeansWithAnnotation((Class<? extends Annotation>) CollectionsTest.class);*/
+        	FastClass fastClass = FastClass.create(User.class);
+        		
     }
 }
