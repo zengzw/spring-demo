@@ -25,14 +25,20 @@ import java.util.Date;
  */
 public class DateTest {
 
-
-	public static SimpleDateFormat month_format = new SimpleDateFormat("MM");
 	public static SimpleDateFormat year_format = new SimpleDateFormat("yyyyMMdd");
 
-	//每周一，周四
 
-
-
+	/**
+	 *  
+	 * @date 2017年9月1日上午11:43:08
+	 * @author zengzw-1220
+	 * @since 1.0.0 
+	 * @param beginDateStr
+	 * 					开始时间
+	 * @param endDateStr
+	 * 					结束时间
+	 * @throws ParseException
+	 */
 	public static void categoryDay(String beginDateStr,String endDateStr) throws ParseException{
 		int weekCount = 0; //总共多少个周
 		Date beginDate = year_format.parse(beginDateStr);
@@ -75,6 +81,7 @@ public class DateTest {
 					weekCount++;
 					
 				}
+				
 				System.out.println("天:"+i +" :周" + currentWeek);
 			}
 			
@@ -84,6 +91,7 @@ public class DateTest {
 			temp.setTime(beginDate);
 			//获取到这个月最后一天
 			int beginLastDayOfCurrentMonth = beginCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			
 			for(int i = beginDay; i<=beginLastDayOfCurrentMonth; i++){
 				temp.set(Calendar.DAY_OF_MONTH,i);
 				
@@ -140,8 +148,8 @@ public class DateTest {
 
 
 	public static void main(String[] args) throws ParseException {
-		String beginDateStr = "20170827";
-		String endDateStr = "20170904";
+		String beginDateStr = "20171230";
+		String endDateStr = "20180108";
 
 		categoryDay(beginDateStr, endDateStr);
 		/*String input = "20170923";
