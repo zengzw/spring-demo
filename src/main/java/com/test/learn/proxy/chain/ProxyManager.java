@@ -50,7 +50,6 @@ public class ProxyManager {
 			}
 			
 		});
-		
 		return create;
 	}
 }

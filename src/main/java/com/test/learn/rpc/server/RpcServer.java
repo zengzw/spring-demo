@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.mina.filter.codec.RecoverableProtocolDecoderException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -26,6 +25,11 @@ import org.springframework.context.ApplicationContextAware;
 
 import com.test.learn.rpc.ServiceRegistry;
 import com.test.learn.rpc.anotation.RpcService;
+import com.test.learn.rpc.decode.RpcDecoder;
+import com.test.learn.rpc.decode.RpcEncoder;
+import com.test.learn.rpc.decode.RpcHandler;
+import com.test.learn.rpc.vo.RpcRequest;
+import com.test.learn.rpc.vo.RpcResponse;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -80,9 +84,9 @@ public class RpcServer implements ApplicationContextAware,InitializingBean {
 				@Override
 				protected void initChannel(SocketChannel channel) throws Exception {
 					channel.pipeline()
-					.addLast() //TODO 
-					.addLast()  //TODO
-					.addLast(); //TODO
+					.addLast(new RpcDecoder(RpcRequest.class)) //// 将 RPC 请求进行解码（为了处理请求）
+					.addLast(new RpcEncoder(RpcResponse.class))  //将 RPC 响应进行编码（为了返回响应）
+					.addLast(new RpcHandler(handlerMap)); // 处理 RPC 请求
 
 				}
 
@@ -99,7 +103,7 @@ public class RpcServer implements ApplicationContextAware,InitializingBean {
 
 
 			if(serviceRegistry != null){
-				serviceRegistry.register(serviceAddress);
+				serviceRegistry.register(serviceAddress); // 注册服务地址
 			}
 
 			future.channel().closeFuture().sync();

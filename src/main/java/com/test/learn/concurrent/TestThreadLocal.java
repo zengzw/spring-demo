@@ -2,7 +2,7 @@
  * Copyright (c) 2013, FPX and/or its affiliates. All rights reserved.
  * Use, Copy is subject to authorized license.
  */
-package com.test.learn;
+package com.test.learn.concurrent;
 
 /**
  *

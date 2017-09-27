@@ -18,7 +18,7 @@
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<cglib.version>2.2.2</cglib.version>
 		<activemq.version>5.14.3</activemq.version>
-			<lts.version>1.6.8-beta1</lts.version>
+		<lts.version>1.6.8-beta1</lts.version>
 		<leveldbjni.version>1.8</leveldbjni.version>
 		<curator.version>2.9.1</curator.version>
 		<netty.version>4.0.20.Final</netty.version>
@@ -300,16 +300,9 @@
 			<version>1.1.39</version>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz-jobs</artifactId>
-			<version>2.2.2</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.quartz-scheduler</groupId> <artifactId>quartz</artifactId> 
+			<version>2.2.2</version> </dependency> <dependency> <groupId>org.quartz-scheduler</groupId> 
+			<artifactId>quartz-jobs</artifactId> <version>2.2.2</version> </dependency> -->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -477,6 +470,27 @@
 			<artifactId>quartz</artifactId>
 			<version>${quartz.version}</version>
 		</dependency>
+
+
+		<!-- Protostuff -->
+		<dependency>
+			<groupId>com.dyuproject.protostuff</groupId>
+			<artifactId>protostuff-core</artifactId>
+			<version>1.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.dyuproject.protostuff</groupId>
+			<artifactId>protostuff-runtime</artifactId>
+			<version>1.0.8</version>
+		</dependency>
+
+
+		<!-- Objenesis -->
+		<dependency>
+			<groupId>org.objenesis</groupId>
+			<artifactId>objenesis</artifactId>
+			<version>2.1</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -526,6 +540,14 @@
 				<filtering>true</filtering>
 			</resource>
 
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>*/*</exclude>
+					<exclude>*.properties</exclude>
+					<exclude>*.xml</exclude>
+				</excludes>
+			</resource>
 		</resources>
 
 		<plugins>
@@ -569,7 +591,7 @@
 				<artifactId>tomcat6-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<port>8010</port>
+					<port>8090</port>
 					<path>/</path>
 					<!-- <warSourceDirectory>webapp</warSourceDirectory> -->
 

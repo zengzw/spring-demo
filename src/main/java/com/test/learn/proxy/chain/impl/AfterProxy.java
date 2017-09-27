@@ -30,4 +30,5 @@ public class AfterProxy extends AbstractProxy{
 		System.out.println("--invoke after proxy");
 	}
 	
+	
 }
