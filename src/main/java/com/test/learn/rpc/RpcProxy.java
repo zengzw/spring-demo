@@ -29,25 +29,25 @@ import com.test.learn.rpc.vo.RpcResponse;
  * @see
  */
 public class RpcProxy {
-	
+
 	private String serverAddress;
-	
-	
+
+
 	private ServiceDiscovery discovery;
-	
-	
+
+
 	public RpcProxy(ServiceDiscovery discovery){
 		this.discovery = discovery;
 	}
 
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	public <T> T create(Class<?> interfaceClass){
-		
+
 		return (T)Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[]{interfaceClass}, new InvocationHandler() {
-			
-			
+
+
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				RpcRequest request = new RpcRequest();
@@ -56,30 +56,30 @@ public class RpcProxy {
 				request.setMethodName(method.getName());
 				request.setParameterTypes(method.getParameterTypes());
 				request.setParameters(args);
-				
+
 				if(discovery != null){
 					serverAddress = discovery.discover(); //发现服务
 				}
-				
-			System.out.println("------>connect address:"+serverAddress);
-				
+
+				System.out.println("------>connect address:"+serverAddress);
+
 				String[] address = serverAddress.split(":");
 				String host = address[0];
 				int port = Integer.parseInt(address[1]);
-				
+
 				//调用客户端，发布服务
 				RpcClient client = new RpcClient(host, port);
 				RpcResponse response = client.send(request);
-				
-				
+
+
 				if(response.getError() != null){
 					return response.getError();
 				}
-				
+
 				return response.getResult();
-				
+
 			}
 		});
-		
+
 	}
 }

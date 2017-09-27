@@ -20,11 +20,16 @@ import com.test.learn.rpc.demo.HelloService;
 
 /**
  * 
+ * 1： 把applicationContenxt xml 配置放开	<!-- <import resource="rpc-client-config.xml"/>  -->
+ *  		 注释	<!-- <import resource="rpc-server-config.xml"/>  -->
+ * 
+ * 
+ * 
  * @author zengzw-1220
  * @date 2017年9月27日上午10:38:33
  * @see
  */
-public class TestRpcServer extends TestWithSpring{
+public class TestRpcClient extends TestWithSpring{
 	
 
 	

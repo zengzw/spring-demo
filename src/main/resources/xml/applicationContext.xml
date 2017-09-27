@@ -149,10 +149,10 @@
 	
 	<!-- RPC 服务主持 -->
  
-	<!-- <import resource="rpc-server-config.xml"/>  -->
+<!-- 	<import resource="rpc-server-config.xml"/>  -->
 	
 	<!--  RPC 客户端 -->
-	  <import resource="rpc-client-config.xml"/>  
+	   <import resource="rpc-client-config.xml"/>   
 
 	<!-- 拦截器 -->
 	<bean name="myIntercepter" class="com.test.springmvc.intercept.MyIntercepter" />

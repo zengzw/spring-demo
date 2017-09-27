@@ -16,7 +16,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
- * TODO
+ * 1： 把applicationContenxt xml 配置放开	<!-- <import resource="rpc-server-config.xml"/>  -->
+ * 
+ * 2： 模拟启动多个服务：修改rpc_server_config.properties “server.address” 端口
+ * 
+ * 3： 分配启动多个服务
+ * 
+ * 
  * @author zengzw-1220
  * @date 2017年9月26日下午12:12:31
  * @see

@@ -100,7 +100,7 @@ public class ServiceRegistry {
 	 
 	 private void createNote(ZooKeeper zk,String data){
 		 try {
-			zk.create(ZKContants.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+			zk.create(ZKContants.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 		} catch (KeeperException | InterruptedException e) {
 			e.printStackTrace();
 		}
