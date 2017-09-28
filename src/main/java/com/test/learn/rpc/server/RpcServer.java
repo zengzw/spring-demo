@@ -73,8 +73,8 @@ public class RpcServer implements ApplicationContextAware,InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup workGrop = new NioEventLoopGroup();
+		EventLoopGroup bossGroup = new NioEventLoopGroup(); //用来接收进来的连接.一旦‘boss’接收到连接，就会把连接信息注册到‘worker’上
+		EventLoopGroup workGrop = new NioEventLoopGroup(); //用来处理已经被接收的连接
 
 		try{
 			ServerBootstrap bootstrap = new ServerBootstrap();
@@ -99,6 +99,7 @@ public class RpcServer implements ApplicationContextAware,InitializingBean {
 			String host = arrayAddress[0];
 			int port = Integer.parseInt(arrayAddress[1]);
 
+			// 绑定端口，开始接收进来的连接
 			ChannelFuture future = bootstrap.bind(host, port);
 
 
@@ -106,6 +107,7 @@ public class RpcServer implements ApplicationContextAware,InitializingBean {
 				serviceRegistry.register(serviceAddress); // 注册服务地址
 			}
 
+			  // 等待服务器  socket 关闭 。
 			future.channel().closeFuture().sync();
 
 
