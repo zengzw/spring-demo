@@ -33,7 +33,7 @@
 	- nothing
 ## Netty
 - Reference
- - https://waylau.com/essential-netty-in-action/GETTING%20STARTED/The%20What%20and%20Why%20of%20Bootstrapping.html
- - https://waylau.com/netty-4-user-guide/Getting%20Started/Shutting%20Down%20Your%20Application.html
+	- https://waylau.com/essential-netty-in-action/GETTING%20STARTED/The%20What%20and%20Why%20of%20Bootstrapping.html
+	- https://waylau.com/netty-4-user-guide/Getting%20Started/Shutting%20Down%20Your%20Application.html
 
  
