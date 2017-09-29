@@ -18,8 +18,7 @@
 ## QuartzJob
 	- nothing
 ## Spring redis session
-	- nothing
-	```
+```
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workGroup = new NioEventLoopGroup();		
 		try {
@@ -51,8 +50,8 @@
 			bossGroup.shutdownGracefully();
 			workGroup.shutdownGracefully();
 		}
-	```
-	nothing3
+```
+
 ## i18n
 	- nothing
 ## RateLimiter
