@@ -19,37 +19,7 @@
 	- nothing
 ## Spring redis session
 ```
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup workGroup = new NioEventLoopGroup();		
-		try {
-			ServerBootstrap bootstrap = new ServerBootstrap();
-			bootstrap.group(bossGroup, workGroup)
-			.channel(NioServerSocketChannel.class)
-			.childHandler(new ChannelInitializer<SocketChannel>(){
-
-				@Override
-				protected void initChannel(SocketChannel ch) throws Exception {
-					System.out.println("---init-channel");
-					ch.pipeline()
-					.addLast(new TimeEncode())
-					.addLast(new DiscardServerHandler());
-				}
-				
-			})
-			.option(ChannelOption.SO_BACKLOG, 128)
-			.childOption(ChannelOption.SO_KEEPALIVE,true);
-			
-			
-			ChannelFuture future = bootstrap.bind(port).sync();   // 绑定端口，开始接收进来的连接
-			
-			 // 等待服务器  socket 关闭 。
-            // 在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
-			future.channel().closeFuture().sync();
-			
-		} catch (Exception e) {
-			bossGroup.shutdownGracefully();
-			workGroup.shutdownGracefully();
-		}
+	None
 ```
 
 ## i18n
@@ -64,6 +34,14 @@
 	- nothing
 ## javassist
 	- nothing
+	
+## NIO
+- com.test.learn.nio
+	- server
+	 NIOServer
+	- client
+	 NIOClient
+	 NIOClient2
 ## Netty
 - Reference
 	- https://waylau.com/essential-netty-in-action/GETTING%20STARTED/The%20What%20and%20Why%20of%20Bootstrapping.html
