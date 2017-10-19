@@ -33,6 +33,9 @@ public class SubJob extends SuperJob{
                 
             }
         }, 10, 1, TimeUnit.SECONDS);*/
+    	
+    	
+    	System.out.println(3 | 3);
     }
    
 }
