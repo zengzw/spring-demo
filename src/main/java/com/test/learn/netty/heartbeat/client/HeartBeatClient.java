@@ -12,8 +12,11 @@
 
 package com.test.learn.netty.heartbeat.client;
 
+import java.util.concurrent.TimeUnit;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -25,10 +28,14 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @see
  */
 public class HeartBeatClient {
-	int port;
+	
+	static int port;
 
-	String address;
-
+	static String address;
+	
+	static Bootstrap bootstrap = null;
+	
+	public HeartBeatClient(){};
 
 	public HeartBeatClient(int port,String address){
 		this.port = port;
@@ -38,14 +45,15 @@ public class HeartBeatClient {
 	public void start(){
 		EventLoopGroup group = new NioEventLoopGroup();
 
-		Bootstrap bootstrap = new Bootstrap();
+	   bootstrap = new Bootstrap();
 		bootstrap.group(group)
 		.channel(NioSocketChannel.class)
 		.handler(new HeartBeatsClientChannelInitializer());
 
 		try {
-			ChannelFuture future = bootstrap.connect(address,port).sync();
-			future.channel().closeFuture().sync();
+			
+			doConnect();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -54,6 +62,42 @@ public class HeartBeatClient {
 
 	}
 
+	
+	public static void doConnect() throws InterruptedException{
+		ChannelFuture future = bootstrap.connect(address,port).sync();
+		
+		future.addListener(new ChannelFutureListener() {
+			
+			
+			@Override
+			public void operationComplete(ChannelFuture future) throws Exception {
+				if(future.isSuccess()){
+					System.out.println("----链接服务器成功....");
+				}else{
+					System.out.println("--重新链接服务器失败，重新链接.");
+					future.channel().eventLoop().schedule(new Runnable() {
+						
+						
+						@Override
+						public void run() {
+							try {
+								System.out.println("----重新链接");
+								doConnect();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}, 3,  TimeUnit.SECONDS);
+				}
+				
+				
+			}
+		});
+		
+		future.channel().closeFuture().sync();
+	}
+	
+	
 	public static void main(String[] args) {
 		HeartBeatClient client = new HeartBeatClient(7788,"127.0.0.1");
 		client.start();

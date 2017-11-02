@@ -12,9 +12,9 @@
 
 package com.test.learn.netty.heartbeat.client;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -57,6 +57,13 @@ public class HeartBeatClientHandler   extends ChannelInboundHandlerAdapter{
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("停止时间是："+format.format(new Date()));
 		System.out.println("关闭链接");
+
+		super.channelInactive(ctx);
+
+		HeartBeatClient.doConnect();
+
+
+		currentTime = 0;
 	}
 
 	@Override
