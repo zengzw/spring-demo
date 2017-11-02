@@ -4,8 +4,6 @@
  */
 package com.test.learn.mthread;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  *
  * @author zengzw
