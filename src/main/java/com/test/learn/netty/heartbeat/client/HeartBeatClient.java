@@ -64,36 +64,8 @@ public class HeartBeatClient {
 
 	
 	public static void doConnect() throws InterruptedException{
+		System.out.println("----connectting......");
 		ChannelFuture future = bootstrap.connect(address,port).sync();
-		
-		future.addListener(new ChannelFutureListener() {
-			
-			
-			@Override
-			public void operationComplete(ChannelFuture future) throws Exception {
-				if(future.isSuccess()){
-					System.out.println("----链接服务器成功....");
-				}else{
-					System.out.println("--重新链接服务器失败，重新链接.");
-					future.channel().eventLoop().schedule(new Runnable() {
-						
-						
-						@Override
-						public void run() {
-							try {
-								System.out.println("----重新链接");
-								doConnect();
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}, 3,  TimeUnit.SECONDS);
-				}
-				
-				
-			}
-		});
-		
 		future.channel().closeFuture().sync();
 	}
 	

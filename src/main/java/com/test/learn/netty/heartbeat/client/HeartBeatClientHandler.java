@@ -80,7 +80,7 @@ public class HeartBeatClientHandler   extends ChannelInboundHandlerAdapter{
 					ctx.channel().writeAndFlush(HEARTBEAT_SEQUENCE.duplicate());
 				}
 			}
-		}	
+		}
 	}
 
 

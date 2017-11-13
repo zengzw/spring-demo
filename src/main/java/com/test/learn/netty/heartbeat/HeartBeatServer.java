@@ -44,7 +44,9 @@ public class HeartBeatServer {
 				.childHandler(new HeartBeatServerChannelInitializer());
 
 		try {
+		     // 服务器绑定端口监听  
 			ChannelFuture future = bootstrap.bind(port).sync();
+			  // 监听服务器关闭，此方法会阻塞  
 			future.channel().closeFuture().sync();
 		} catch (Exception e) {
 			e.printStackTrace();

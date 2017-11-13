@@ -18,7 +18,7 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 
 /**
- * TODO
+ * 
  * @author zengzw-1220
  * @date 2017年11月2日上午10:02:40
  * @see
@@ -45,6 +45,7 @@ public class HeartBeatServerHandler extends ChannelInboundHandlerAdapter{
 				if(loss_connect_time > 2){
 					System.out.println("超时超过指定次数，关闭不要要的链接");
 					ctx.channel().close();
+					loss_connect_time = 0;
 				}
 			}else{
 				
