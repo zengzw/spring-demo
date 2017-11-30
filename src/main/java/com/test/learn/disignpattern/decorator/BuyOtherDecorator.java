@@ -29,7 +29,9 @@ public class BuyOtherDecorator implements IByTea{
     
     public static void main(String[] args) {
         IByTea oolongTea = new OolongTea();
-        oolongTea.buy();
+//        oolongTea.buy();
+        
+        System.out.println("--------------");
         
         IByTea decorator = new BuyOtherDecorator(oolongTea);
         decorator.buy();

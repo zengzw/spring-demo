@@ -16,38 +16,38 @@ package com.test.learn.mthread;
  */
 public class JoinTest {
 
-    
-    class ThreadTest extends Thread{
-        
-        @Override
-        public void run() {
-            for(int i =0; i<10; i++){
-                System.out.println(Thread.currentThread().getName()+">>"+i);
-            }
-        }
-    }
-    
-    public static void main(String[] a){
-        JoinTest yieldTest = new JoinTest();
-        ThreadTest test1 =  yieldTest.new ThreadTest();
-        test1.setName("001");
-        ThreadTest test2 = yieldTest.new ThreadTest();
-        test2.setName("002");
-        
-        test1.start();
-        test2.start();
-        
-        try {
-            test1.join();
-            test2.join();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    
-        System.out.println("主线程");
-        
-        
-        
-    }
+
+	class ThreadTest extends Thread{
+
+		@Override
+		public void run() {
+			for(int i =0; i<5; i++){
+				System.out.println(Thread.currentThread().getName()+">>"+i);
+			}
+		}
+	}
+
+	public static void main(String[] a){
+		JoinTest yieldTest = new JoinTest();
+		ThreadTest test1 =  yieldTest.new ThreadTest();
+		test1.setName("001");
+		ThreadTest test2 = yieldTest.new ThreadTest();
+		test2.setName("002");
+		
+		
+		try {
+			test1.start();
+			test2.start();
+
+			test1.join();
+			test2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("主线程");
+
+
+
+	}
 }
