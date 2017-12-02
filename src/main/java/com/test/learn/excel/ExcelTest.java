@@ -16,6 +16,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.ReflectionUtils;
+
+import com.google.common.reflect.Reflection;
 import com.test.learn.excel.ExcelUtil.ExportMonitor;
 import com.test.springmvc.model.User;
 
@@ -28,14 +31,12 @@ import com.test.springmvc.model.User;
 public class ExcelTest extends ExportMonitor {
 
 	public static void main(String[] args) {
-
 		
-
 		String[] fields = null;
 		String[] titles = null;
 		fields = new String[]{"id", "name", "nickName"};
 		titles = new String[]{"订单编号", "供应商订单编号", "服务供应商"};
-		String head = "";
+		String head = "-------head-----";
 
 		List<User> list = new ArrayList<>();
 		User user = new User();
@@ -47,7 +48,7 @@ public class ExcelTest extends ExportMonitor {
 		
 		User user2 = new User();
 		user2.setId(2);
-		user2.setName("name2");
+		user2.setName("name2asa阿什顿发撒打发斯蒂芬是非得失的方式");
 		user2.setNickName("李四");
 		list.add(user2);
 		

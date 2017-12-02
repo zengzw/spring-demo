@@ -43,6 +43,9 @@ public class ExcelUtil
 
 			sheet.setDefaultRowHeight((short)500);
 
+			/*
+			 * 合并区域，主标题
+			 */
 			int startRowIndex = 0;
 			if (StringUtils.isNotEmpty(head))
 			{
@@ -56,6 +59,10 @@ public class ExcelUtil
 				cell1.setCellValue(head);
 				startRowIndex++;
 			}
+			
+			/*
+			 * 创建标题
+			 */
 			HSSFRow titleRow = sheet.createRow(startRowIndex);
 			for (int i = 0; i < fields.length; i++)
 			{
@@ -68,6 +75,10 @@ public class ExcelUtil
 				cell.setCellStyle(titleStyle);
 				cell.setCellValue(title);
 			}
+			
+			/*
+			 * 填充数据行
+			 */
 			for (Object data : dataList) {
 				if (data != null) {
 					if ((data instanceof Map))
@@ -113,11 +124,14 @@ public class ExcelUtil
 					}
 				}
 			}
+			
+			//
 			for (int i = 0; i < titles.length; i++)
 			{
 				if (monitor != null) {
 					monitor.doProgress(count[0], null);
 				}
+				/* 自动调整列宽度 */  
 				sheet.autoSizeColumn(i);
 			}
 		}
@@ -249,6 +263,7 @@ public class ExcelUtil
 		short textFormat = format.getFormat("@");
 		dataStyle.setDataFormat(textFormat);
 
+		//excel 单个sheet最大限制，如果超出，分成多个sheet来存在
 		int maxSize = 65000;
 		int sheetCount = list.size() / maxSize;
 		if (list.size() % maxSize > 0) {

@@ -65,4 +65,14 @@
 	- https://waylau.com/netty-4-user-guide/Getting%20Started/Shutting%20Down%20Your%20Application.html
 	
 ## Hystrix
- - 服务熔断、降级、限流
+	### 线程池隔离
+		- 
+	### 信号量隔离
+		-
+	### 熔断
+		-
+	### 降级回退
+		-
+		
+		
+		
