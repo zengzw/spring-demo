@@ -8,7 +8,11 @@ import com.google.common.util.concurrent.RateLimiter;
 
 /**
  *
- * 每秒请求,限制流量
+ * 令牌算法实现限流
+ * 
+ * 漏桶（平滑限流）SmoothWarmingUp
+ * 
+ * 突发量/桶容量= 速率
  * 
  * 
  * @author zengzw
@@ -38,9 +42,11 @@ public class RateLimiterDemo {
     
     public static void testWithRateLimiter() {
         Long start = System.currentTimeMillis();
+        //表示容量为10，每秒新增10个令牌
         RateLimiter limiter = RateLimiter.create(10.0); // 每秒不超过10个任务被提交
-        for (int i = 0; i < 1500; i++) {
+        for (int i = 0; i < 20; i++) {
             limiter.acquire(); // 请求RateLimiter, 超过permits会被阻塞
+            
             System.out.println("call execute.." + i);
             
         }

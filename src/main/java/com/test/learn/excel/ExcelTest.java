@@ -14,6 +14,7 @@ package com.test.learn.excel;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.util.ReflectionUtils;
@@ -43,6 +44,7 @@ public class ExcelTest extends ExportMonitor {
 		user.setId(1);
 		user.setName("name");
 		user.setNickName("张三");
+		user.setDateTime(new Date());
 		list.add(user);
 		
 		
@@ -55,8 +57,8 @@ public class ExcelTest extends ExportMonitor {
 		ExcelTest excelTest = new ExcelTest();
 		
 //		File file = ExcelUtil.export (head, fields, titles, list, null);
-		ExcelUtil.exportExcel(excelTest, head, fields, titles, list, null);
-		
+//		ExcelUtil.exportExcel(excelTest, head, fields, titles, list, null);
+		ExcelUtil.export(list, null);
 		
 	}
 

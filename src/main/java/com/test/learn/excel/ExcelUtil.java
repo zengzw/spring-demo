@@ -21,7 +21,10 @@ import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -30,8 +33,10 @@ import org.apache.poi.ss.util.CellRangeAddress;
  * @author zengzw-1220
  * @date 2017年11月30日下午4:55:06
  */
-public class ExcelUtil
-{
+public class ExcelUtil{
+	
+	private static final DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	@SuppressWarnings("rawtypes")
 	private static void exportExcelBySheet(ExportMonitor monitor, int[] count, HSSFWorkbook wb, String sheetName, HSSFCellStyle headStyle, HSSFCellStyle titleStyle, HSSFCellStyle dataStyle, String head, String[] fields, String[] titles, List<?> dataList){
 		try
@@ -59,7 +64,7 @@ public class ExcelUtil
 				cell1.setCellValue(head);
 				startRowIndex++;
 			}
-			
+
 			/*
 			 * 创建标题
 			 */
@@ -75,7 +80,7 @@ public class ExcelUtil
 				cell.setCellStyle(titleStyle);
 				cell.setCellValue(title);
 			}
-			
+
 			/*
 			 * 填充数据行
 			 */
@@ -110,6 +115,12 @@ public class ExcelUtil
 									cell.setCellStyle(dataStyle);
 									cell.setCellValue(((BigDecimal)value).doubleValue());
 								}
+								if(value instanceof Date){
+									String now = format.format(value);
+									dataStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("yyyy-MM-dd HH:mm:ss"));
+									cell.setCellStyle(dataStyle);
+									cell.setCellValue(now);
+								}
 								else
 								{
 									cell.setCellStyle(dataStyle);
@@ -124,8 +135,9 @@ public class ExcelUtil
 					}
 				}
 			}
+
+			// TODO  根据反射从字段名中获取具体宽度，如果没有设置，为自动填充内容
 			
-			//
 			for (int i = 0; i < titles.length; i++)
 			{
 				if (monitor != null) {
@@ -143,6 +155,7 @@ public class ExcelUtil
 			e.printStackTrace();
 		}
 	}
+
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static synchronized List<File> exportExcel(ExportMonitor monitor, String head, String[] fields, String[] titles, List<?> dataList, File saveDir)
@@ -205,7 +218,7 @@ public class ExcelUtil
 		}
 		return xlsFileList;
 	}
-
+	
 	public static synchronized File mergeExportExcel(ExportMonitor monitor, String head, List<String[]> fields, List<String[]> titles, Map<String, List<?>> list, File saveDir, String[] sheetNames)
 	{
 		if (saveDir == null)
@@ -361,8 +374,8 @@ public class ExcelUtil
 	private static HSSFCellStyle createHeadStyle(HSSFWorkbook wb)
 	{
 		HSSFCellStyle headStyle = wb.createCellStyle();
-		headStyle.setVerticalAlignment((short)1);
-		headStyle.setAlignment((short)2);
+		headStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+		headStyle.setAlignment(HorizontalAlignment.CENTER);
 
 		HSSFFont font = wb.createFont();
 
@@ -373,12 +386,11 @@ public class ExcelUtil
 		return headStyle;
 	}
 
-	@SuppressWarnings("deprecation")
 	private static HSSFCellStyle createTitleStyle(HSSFWorkbook wb)
 	{
 		HSSFCellStyle titleStyle = wb.createCellStyle();
-		titleStyle.setVerticalAlignment((short)1);
-		titleStyle.setAlignment((short)2);
+		titleStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+		titleStyle.setAlignment(HorizontalAlignment.CENTER);
 
 		HSSFFont font = wb.createFont();
 
@@ -387,21 +399,20 @@ public class ExcelUtil
 
 		titleStyle.setFont(font);
 		titleStyle.setWrapText(false);
-
-		titleStyle.setBorderBottom((short)1);
-		titleStyle.setBorderLeft((short)1);
-		titleStyle.setBorderRight((short)1);
-		titleStyle.setBorderTop((short)1);
+		titleStyle.setBorderBottom(BorderStyle.THIN);
+		titleStyle.setBorderBottom(BorderStyle.THIN);
+		titleStyle.setBorderLeft(BorderStyle.THIN);
+		titleStyle.setBorderRight(BorderStyle.THIN);
+		titleStyle.setBorderTop(BorderStyle.THIN);
 
 		return titleStyle;
 	}
 
-	@SuppressWarnings("deprecation")
 	private static HSSFCellStyle createDataStyle(HSSFWorkbook wb)
 	{
 		HSSFCellStyle dataStyle = wb.createCellStyle();
-		dataStyle.setVerticalAlignment((short)1);
-		dataStyle.setAlignment((short)2);
+		dataStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+		dataStyle.setAlignment(HorizontalAlignment.CENTER);
 
 		HSSFFont font = wb.createFont();
 
@@ -411,10 +422,10 @@ public class ExcelUtil
 		dataStyle.setFont(font);
 		dataStyle.setWrapText(true);
 
-		dataStyle.setBorderBottom((short)1);
-		dataStyle.setBorderLeft((short)1);
-		dataStyle.setBorderRight((short)1);
-		dataStyle.setBorderTop((short)1);
+		dataStyle.setBorderBottom(BorderStyle.THIN);
+		dataStyle.setBorderLeft(BorderStyle.THIN);
+		dataStyle.setBorderRight(BorderStyle.THIN);
+		dataStyle.setBorderTop(BorderStyle.THIN);
 
 		return dataStyle;
 	}
@@ -447,10 +458,33 @@ public class ExcelUtil
 		return null;
 	}
 
+
+	public static File export(List<?> list,File saveDir){
+		Class<?> objClz = list.get(0).getClass();
+		String header = ExcelReflectionUtil.getHeaderExcelAnoationByClass(objClz);
+		String[] fields = ExcelReflectionUtil.getFieldNameByClass(objClz);
+		String[] titles = ExcelReflectionUtil.getTitleByClass(objClz);
+		
+		List<File> xlsFiles = exportExcel(null, header, fields, titles, list, saveDir);
+		if (xlsFiles.size() > 1)
+		{
+			File zipFile = new File(saveDir.getParentFile(), "batchExport.zip");
+			return zipFile;
+		}
+		if (xlsFiles.size() == 1) {
+			return (File)xlsFiles.get(0);
+		}
+		
+		return null;
+	}
+
+
 	public static File mergeExport(ExportMonitor monitor, String head, List<String[]> fields, List<String[]> titles, Map<String, List<?>> list, File saveDir, String[] sheetNames)
 	{
 		return mergeExportExcel(monitor, head, fields, titles, list, saveDir, sheetNames);
 	}
+
+
 
 	public static abstract class ExportMonitor
 	{
@@ -460,4 +494,6 @@ public class ExcelUtil
 
 		public abstract void finish(int paramInt1, int paramInt2, Exception paramException);
 	}
+
+
 }

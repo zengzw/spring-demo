@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.test.learn.excel.Excel;
 import com.test.springmvc.customer.Forbidden;
 
 
@@ -23,16 +24,20 @@ import com.test.springmvc.customer.Forbidden;
 public class User {
     
     @Length(min=1,message="id.....")
+    @Excel(name="注解Id")
     private int id;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Excel(name="日期")
     private Date dateTime;
 
     @Size(min=2,message="{user.name.empty}")
     @Forbidden(message="包含敏感词语")
+    @Excel(name="名称")
     private String name;
 
     @Size(max=5,min=2,message="{user.nickName.size}")
+    @Excel(name="昵称")
     private String nickName;
 
     public Date getDateTime() {

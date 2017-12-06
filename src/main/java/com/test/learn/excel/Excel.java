@@ -43,6 +43,11 @@ public @interface Excel {
 	 */
 	int height() default 400;
 	
+	/*
+	 * 标题头
+	 */
+	String head() default  "";
+	
 
 	//忽略该字段
 	boolean skip() default false;

@@ -65,13 +65,14 @@
 	- https://waylau.com/netty-4-user-guide/Getting%20Started/Shutting%20Down%20Your%20Application.html
 	
 ## Hystrix
-### 线程池隔离
-	- 
-### 信号量隔离
-		
-### 熔断
+- Refenence
+ 	http://www.jianshu.com/p/266cba713eb1
+- 线程池隔离
+- 信号量隔离
+	
+- 熔断
 	-
-### 降级回退
+- 降级回退
 	-
 		
 		
