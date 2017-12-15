@@ -4,20 +4,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-
-import com.test.learn.rpc.RpcProxy;
-import com.test.learn.rpc.demo.HelloService;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath*:/xml/applicationContext.xml" })
+@ContextConfiguration({ "classpath*:/xml/application-service.xml" })
 @TransactionConfiguration(defaultRollback = true)
 public class TestWithSpring{
 
-	protected Logger log = LoggerFactory.getLogger("thread-test");
+	protected static final Logger log = LoggerFactory.getLogger(TestWithSpring.class);
 	
 
 	@Test

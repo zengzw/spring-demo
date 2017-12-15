@@ -14,97 +14,18 @@
          http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<context:component-scan base-package="com.test">
-	 	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
-	</context:component-scan>
+	 <context:component-scan base-package="com.test.springmvc.console">
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
+	  </context:component-scan>
+
 
 	<mvc:annotation-driven validator="validator" />
 	<aop:aspectj-autoproxy />
 
-	<bean id="testUser" class="com.test.springmvc.model.TestUser">
-		<property name="age" value="22"></property>
-	</bean>
 
-<!-- 	
-	
-	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-		<property name="maxTotal" value="${redis.maxTotal}" />
-		<property name="maxIdle" value="${redis.maxIdle}" />
-		<property name="minIdle" value="${redis.minIdle}" />
-		<property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}" />
-		<property name="minEvictableIdleTimeMillis" value="${redis.minEvictableIdleTimeMillis}" />
-		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
-	</bean>
-	
-	
+	<import resource="application-service.xml"/>
 
-	<bean id="redisSentinelConfiguration"
-		class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
-		<property name="master">
-			<bean class="org.springframework.data.redis.connection.RedisNode">
-				<property name="name" value="r2"></property>
-			</bean>
-		</property>
 
-		<property name="sentinels">
-			<set>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
-					<constructor-arg name="port" value="${redis.port}"></constructor-arg>
-				</bean>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${redisNode1.host}"></constructor-arg>
-					<constructor-arg name="port" value="${redis.port}"></constructor-arg>
-				</bean>
-				<bean class="org.springframework.data.redis.connection.RedisNode">
-					<constructor-arg name="host" value="${redisNode2.host}"></constructor-arg>
-					<constructor-arg name="port" value="${redis.port}"></constructor-arg>
-				</bean>
-			</set>
-		</property>
-	</bean>
-	
-	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">  
-        <constructor-arg index="0" ref="jedisPoolConfig" />  
-        <constructor-arg index="1">  
-            <list>  
-               <bean name="master" class="redis.clients.jedis.JedisShardInfo">   
-                    <constructor-arg name="host" value="${redis.host}" />   
-                    <constructor-arg name="port" value="${redis.port}" />
-                    <constructor-arg name="timeout" value="${redis.timeout}" />   
-                </bean>
-                <bean name="slaver" class="redis.clients.jedis.JedisShardInfo">  
-                    <constructor-arg name="host" value="${redisNode1.host}" />  
-                    <constructor-arg name="port" value="${redis.port}"/> 
-                    <constructor-arg name="timeout" value="${redis.timeout}" /> 
-                </bean>
-                <bean name="slaver" class="redis.clients.jedis.JedisShardInfo">  
-                    <constructor-arg name="host" value="${redisNode2.host}" />  
-                    <constructor-arg name="port" value="${redis.port}"/>
-                    <constructor-arg name="timeout" value="${redis.timeout}" />  
-                </bean>   
-            </list>  
-        </constructor-arg>  
-    </bean> 
-	
-	<bean id="shardedJedisService" class="com.dtds.platform.data.redis.sharded.ShardedJedisService">
-		<property name="shardedJedisPool" ref="shardedJedisPool"></property>
-	</bean>
-
-	<bean id="jeidsConnectionFactory"
-		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-		<constructor-arg ref="redisSentinelConfiguration" />
-		<property name="poolConfig" ref="jedisPoolConfig" />
-		<property name="timeout" value="${redis.timeout}"></property>
-	</bean>
-
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
-		p:connection-factory-ref="jeidsConnectionFactory" />
-
-	<bean id="redisService" class="com.dtds.platform.data.redis.RedisSlave">
-		<property name="redistemplate" ref="redisTemplate"></property>
-	</bean> 
- -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
@@ -147,13 +68,7 @@
 		</property>
 	</bean>
 	
-	<!-- RPC 服务主持 -->
- 
-<!-- 	<import resource="rpc-server-config.xml"/>  -->
 	
-	<!--  RPC 客户端 -->
-	   <import resource="rpc-client-config.xml"/>   
-
 	<!-- 拦截器 -->
 	<bean name="myIntercepter" class="com.test.springmvc.intercept.MyIntercepter" />
 	<aop:config proxy-target-class="true">
@@ -177,10 +92,6 @@
 		</bean> -->
 
 
-
-
-
-
 	<!-- 处理i18n资源文件 -->
 	<bean id="messageSource"
 		class="com.test.commom.web.source.spring.WildcardsMessageSource">
@@ -198,10 +109,6 @@
 		class="com.test.commom.web.source.service.impl.MessageSourceServiceImpl">
 		<property name="messageSource" ref="messageSource" />
 	</bean>
-
-	<!--  spring quartz 整合  -->
-	<bean id="schedulerFactoryBean"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
 
 	<!-- 消息国家化 -->
 	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
@@ -240,11 +147,6 @@
 			value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
 
-		<!-- redis session -->
-	<!-- 	<import resource="redis-session.xml"/> -->
-
-		<!-- lts distribute timer -->
-	<!-- 	<import resource="lts-timer.xml"/> -->
 
 
 </beans>

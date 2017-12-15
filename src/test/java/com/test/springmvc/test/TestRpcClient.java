@@ -10,13 +10,14 @@
  * @修改内容: 
  */
 
-package com.test.springmvc;
+package com.test.springmvc.test;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.test.learn.rpc.RpcProxy;
 import com.test.learn.rpc.demo.HelloService;
+import com.test.springmvc.TestWithSpring;
 
 /**
  * 
@@ -32,7 +33,7 @@ import com.test.learn.rpc.demo.HelloService;
 public class TestRpcClient extends TestWithSpring{
 	
 
-	
+
 	@Autowired
 	RpcProxy rpcProxy;
 	

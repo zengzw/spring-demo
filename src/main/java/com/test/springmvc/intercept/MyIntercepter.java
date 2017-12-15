@@ -24,10 +24,10 @@ public class MyIntercepter implements MethodInterceptor{
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
 
-        System.out.println("----------"+invocation.getArguments());
-        System.out.println("----------"+invocation.getMethod());
-        System.out.println("----------"+invocation.getMethod().getParameterTypes()[0]);
-        System.out.println("-----------"+invocation.getThis().getClass());
+        System.out.println("arguments:----------"+invocation.getArguments());
+        System.out.println("method:----------"+invocation.getMethod());
+//        System.out.println("----------"+invocation.getMethod().getParameterTypes() == null ? "" :invocation.getMethod().getParameterTypes()[0]);
+        System.out.println("class:-----------"+invocation.getThis().getClass());
         if(rateLimiter.tryAcquire()){
             System.out.println("----接收请求");
             return invocation.proceed();
