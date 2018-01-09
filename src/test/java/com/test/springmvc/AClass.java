@@ -14,6 +14,8 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import scala.collection.generic.BitOperations.Int;
+
 
 /**
  *
@@ -48,7 +50,9 @@ public class AClass {
        System.out.println(3 >> 3);
        
        
-       
+       Integer i = 200;
+       Integer b = 200;
+       System.out.println(i == b);
        
        
        

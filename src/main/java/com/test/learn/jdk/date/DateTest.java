@@ -49,6 +49,12 @@ public class DateTest {
 		Calendar endCal = Calendar.getInstance();
 		endCal.setTime(endDate);
 
+		
+		//获取年份
+		int beginYear = beginCal.get(Calendar.YEAR);
+		int endYear = endCal.get(Calendar.YEAR);
+		
+		
 		//获取日期月份
 		int beginMonth = beginCal.get(Calendar.MONTH)+1;
 		int endMonth = endCal.get(Calendar.MONTH)+1;
@@ -57,13 +63,22 @@ public class DateTest {
 		int beginDay = beginCal.get(Calendar.DAY_OF_MONTH);
 		int endDay = endCal.get(Calendar.DAY_OF_MONTH);
 
+		//不是跨年的逻辑
+		if(beginYear == endYear){
+			
+		} //跨年的逻辑
+		else{
+			for(int i = beginYear; i <= endYear; i++){
+				System.out.println(i);
+			}
+		}
 
 		//月份相同的话，不需要计算当前月的某一天是周几。否则得根据月份来判断当前天是属于周几。
 		if(beginMonth == endMonth){
 			//重新设置一个新的日期，避免修改之前的日期
 			Calendar temp = Calendar.getInstance();
 			temp.setTime(beginDate);
-			
+
 			//获取当前天数是属于是星期几
 			for(int i = beginDay; i<= endDay; i++){
 				temp.set(Calendar.DAY_OF_MONTH,i);
@@ -71,7 +86,7 @@ public class DateTest {
 				int currentWeek = temp.get(Calendar.DAY_OF_WEEK);
 				if(currentWeek > 1){
 					currentWeek--;
-					
+
 					//计算最后天数不是周日的，也是算新的一周。
 					if(i == endDay ){
 						weekCount++;
@@ -79,68 +94,68 @@ public class DateTest {
 				}else{
 					currentWeek = 7;
 					weekCount++;
-					
+
 				}
-				
+
 				System.out.println("天:"+i +" :周" + currentWeek);
 			}
-			
+
 		}else{
 			//重新设置一个新的日期，避免修改之前的日期
 			Calendar temp = Calendar.getInstance();
 			temp.setTime(beginDate);
 			//获取到这个月最后一天
 			int beginLastDayOfCurrentMonth = beginCal.getActualMaximum(Calendar.DAY_OF_MONTH);
-			
+
 			for(int i = beginDay; i<=beginLastDayOfCurrentMonth; i++){
 				temp.set(Calendar.DAY_OF_MONTH,i);
-				
+
 				//获取周
 				int currentWeek = temp.get(Calendar.DAY_OF_WEEK);
 				if(currentWeek > 1){
 					currentWeek--;
-					
+
 					//计算最后天数不是周日的，也是算新的一周。
 					if(i == endDay ){
 						weekCount++;
 					};
-					
+
 				}else{
 					currentWeek = 7;
 					weekCount++;
-					
+
 				}
 				System.out.println("跨日期-->天："+year_format.format(temp.getTime())+"  周："+currentWeek);
 			}
-			
-		
+
+
 			System.out.println("---------");
 			//结束日期的周几
 			temp.setTime(endDate);
 			for(int i = 1; i<=endDay; i++){
 				temp.set(Calendar.DAY_OF_MONTH,i);
-				
+
 				//获取当前日期星期几
 				int currentWeek = temp.get(Calendar.DAY_OF_WEEK);
 				if(currentWeek > 1){
 					currentWeek--;
-					
+
 					//计算最后天数不是周日的，也是算新的一周。
 					if(i == endDay ){
 						weekCount++;
 					};
-					
+
 				}else{
 					currentWeek = 7;
 					weekCount++;
 				}
-				
+
 				System.out.println("跨日期-->天："+year_format.format(temp.getTime())+"  周："+currentWeek);
 			}
-			
+
 		}
 
-		
+
 		System.out.println("总共有："+weekCount +" 周");
 
 	}
@@ -148,8 +163,9 @@ public class DateTest {
 
 
 	public static void main(String[] args) throws ParseException {
-		String beginDateStr = "20171230";
-		String endDateStr = "20180108";
+		String beginDateStr = "20180108";
+		String endDateStr = "20190108";
+
 
 		categoryDay(beginDateStr, endDateStr);
 		/*String input = "20170923";

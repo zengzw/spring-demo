@@ -27,7 +27,6 @@ import com.test.learn.proxy.chain.ProxyManager;
 public class TestClient {
 	
 	public static void main(String[] args) {
-
 		List<Proxy> proxyList = new ArrayList<>();
 		proxyList.add(new BeforeProxy());
 		proxyList.add(new AfterProxy());

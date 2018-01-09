@@ -4,9 +4,7 @@
  */
 package com.test.learn.proxy;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
-import java.math.BigDecimal;
 
 /**
  *
