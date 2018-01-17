@@ -11,7 +11,7 @@
 	<properties>
 		<spring.version>4.1.7.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<org.springframework-version>4.0.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
@@ -554,6 +554,13 @@
 			<artifactId>assertj-core</artifactId>
 			<!-- use 2.6.0 for Java 7 projects -->
 			<version>2.6.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.5</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
