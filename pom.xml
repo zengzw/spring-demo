@@ -563,6 +563,13 @@
 			<version>1.8.5</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.mapdb</groupId>
+			<artifactId>mapdb</artifactId>
+			<version>3.0.0-beta5</version>
+		</dependency>
+
 	</dependencies>
 
 
