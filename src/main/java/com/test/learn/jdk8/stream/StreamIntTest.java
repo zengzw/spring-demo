@@ -29,23 +29,25 @@ public class StreamIntTest {
 
 		IntStream.of(1,2,3).forEach(i ->System.out.println(i));
 		
-		System.err.println("----------");
+		System.out.println("----IntStream.of------");
 		
 		IntStream.range(1, 3).forEach(i -> System.out.println(i));
 		
 		
-		System.out.println("-----------");
+		System.out.println("-----IntStream.range------");
+		
 		IntStream.rangeClosed(1, 3).forEach(i -> System.out.println(i));
 		
 		
-		System.out.println("-------");
+		System.out.println("---IntStream.rangeClosed----");
+		
 		IntStream.iterate(0,i -> i+2).limit(6).forEach(i->System.out.println(i));;
 		
-		System.out.println("---------------");
+		System.out.println("------IntStream.iterate---------");
+		
 		List<Integer> listReult = IntStream.range(0, 10).boxed().collect(Collectors.toList());
-		
 		listReult.stream().forEach(i->System.out.println(i));
-		
+		System.out.println("------ IntStream.range(0, 10).boxed().collect---------");
 		
 		DoubleStream stream = IntStream.range(1, 5).mapToDouble(i -> i);
 	}

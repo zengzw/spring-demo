@@ -12,6 +12,9 @@
 
 package com.test.learn.concurrent;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -26,5 +29,27 @@ public class TestThreadLocalRandom {
 
 		ThreadLocalRandom random = ThreadLocalRandom.current();
 		System.out.println(random.nextInt(20));
+		
+		ExecutorService executors = Executors.newCachedThreadPool();
+		Executors.newFixedThreadPool(5);
+		
+		executors.execute(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("----------这是多线程");
+			}
+		});
+		
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		
+		System.out.println(executors.isShutdown());
+		executors.shutdown();
+		System.out.println(executors.isShutdown());
 	}
 }
+

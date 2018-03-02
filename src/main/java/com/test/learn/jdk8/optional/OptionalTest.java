@@ -26,6 +26,7 @@ public class OptionalTest {
 	public static void main(String[] args) {
 	    //创建Optional实例，也可以通过方法返回值得到。
 	    Optional<String> name = Optional.of("Sanaulla");
+	    name.ifPresent(System.out::println);
 	 
 	    //创建没有值的Optional实例，例如值为'null'
 	    Optional empty = Optional.ofNullable(null);
