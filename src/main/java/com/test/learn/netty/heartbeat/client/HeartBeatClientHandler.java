@@ -65,12 +65,13 @@ public class HeartBeatClientHandler   extends ChannelInboundHandlerAdapter{
 
 	@Override
 	public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+		
 		System.out.println("当前轮询时间："+format.format(new Date()));
 
 		if(evt instanceof IdleStateEvent){
 			IdleStateEvent event = (IdleStateEvent)evt;
 			
-			
+		
 			if(event.state() ==  IdleState.WRITER_IDLE){
 				if(currentTime <= TRY_TIMES){
 					currentTime ++;
