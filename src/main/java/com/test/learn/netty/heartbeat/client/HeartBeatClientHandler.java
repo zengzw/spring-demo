@@ -70,6 +70,7 @@ public class HeartBeatClientHandler   extends ChannelInboundHandlerAdapter{
 		if(evt instanceof IdleStateEvent){
 			IdleStateEvent event = (IdleStateEvent)evt;
 			
+			
 			if(event.state() ==  IdleState.WRITER_IDLE){
 				if(currentTime <= TRY_TIMES){
 					currentTime ++;
