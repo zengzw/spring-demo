@@ -12,14 +12,14 @@
 
 package com.test.learn.netty.heartbeat.client;
 
-import java.util.concurrent.TimeUnit;
-
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 /**
  * 
@@ -28,13 +28,13 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @see
  */
 public class HeartBeatClient {
-	
+
 	static int port;
 
 	static String address;
-	
+
 	static Bootstrap bootstrap = null;
-	
+
 	public HeartBeatClient(){};
 
 	public HeartBeatClient(int port,String address){
@@ -44,32 +44,40 @@ public class HeartBeatClient {
 
 	public void start(){
 		EventLoopGroup group = new NioEventLoopGroup();
-
-	   bootstrap = new Bootstrap();
+		ChannelFuture future = null;
+		bootstrap = new Bootstrap();
 		bootstrap.group(group)
 		.channel(NioSocketChannel.class)
+		.option(ChannelOption.TCP_NODELAY, true)  
+		.handler(new LoggingHandler(LogLevel.INFO))  
 		.handler(new HeartBeatsClientChannelInitializer());
 
 		try {
-			
-			doConnect();
-			
+			future = bootstrap.connect(address,port).sync();
+			future.channel().closeFuture().sync();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			group.shutdownGracefully();
+			if (null != future) {  
+				if (future.channel() != null && future.channel().isOpen()) {  
+					future.channel().close();  
+				}  
+			}  
+			System.out.println("----connectting......");
+			this.start();
+			System.out.println("----connectting sucess......");
 		}
 
 	}
 
-	
+
 	public static void doConnect() throws InterruptedException{
 		System.out.println("----connectting......");
-		ChannelFuture future = bootstrap.connect(address,port).sync();
-		future.channel().closeFuture().sync();
+
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		HeartBeatClient client = new HeartBeatClient(7788,"127.0.0.1");
 		client.start();

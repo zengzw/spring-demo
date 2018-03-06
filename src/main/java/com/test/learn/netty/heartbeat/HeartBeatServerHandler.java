@@ -40,10 +40,10 @@ public class HeartBeatServerHandler extends ChannelInboundHandlerAdapter{
 			IdleStateEvent event = (IdleStateEvent) evt;
 			if(event.state() == IdleState.READER_IDLE){
 				loss_connect_time ++;
-				System.out.println("接受消息超时.......");
+				System.out.println("5秒没有接受[客户端]消息了，超时.......");
 				
 				if(loss_connect_time > 2){
-					System.out.println("超时超过指定次数，关闭不要要的链接");
+					System.out.println("超时超过指定次数，关闭这个不活跃的链接");
 					ctx.channel().close();
 					loss_connect_time = 0;
 				}

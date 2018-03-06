@@ -12,12 +12,16 @@
 
 package com.test.learn.netty.heartbeat;
 
+import java.net.InetSocketAddress;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.EventLoop;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 /**
  * TODO
@@ -41,18 +45,23 @@ public class HeartBeatServer {
 		ServerBootstrap bootstrap = new ServerBootstrap()
 				.group(bossGroup, workGroup)
 				.channel(NioServerSocketChannel.class)
-				.childHandler(new HeartBeatServerChannelInitializer());
+				.handler(new LoggingHandler(LogLevel.INFO))
+				.localAddress(new InetSocketAddress(port))  
+				.childHandler(new HeartBeatServerChannelInitializer())
+				.childOption(ChannelOption.SO_KEEPALIVE, true);  
 
 		try {
-		     // 服务器绑定端口监听  
+			// 服务器绑定端口监听  
 			ChannelFuture future = bootstrap.bind(port).sync();
-			  // 监听服务器关闭，此方法会阻塞  
+			System.out.println("Server start listen at:"+port);
+			// 监听服务器关闭，此方法会阻塞  
 			future.channel().closeFuture().sync();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
 			bossGroup.shutdownGracefully();
 			workGroup.shutdownGracefully();
+		}finally {
+
 		}
 	}
 
