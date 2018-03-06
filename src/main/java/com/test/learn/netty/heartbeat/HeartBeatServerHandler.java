@@ -37,6 +37,7 @@ public class HeartBeatServerHandler extends ChannelInboundHandlerAdapter{
 	public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
 		if(evt instanceof IdleStateEvent){
 			   //服务端对应着读事件，当为READER_IDLE时触发
+			
 			IdleStateEvent event = (IdleStateEvent) evt;
 			if(event.state() == IdleState.READER_IDLE){
 				loss_connect_time ++;
