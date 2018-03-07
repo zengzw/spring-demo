@@ -34,14 +34,14 @@ public class HeartBeatServerChannelInitializer extends ChannelInitializer<Socket
 	@Override
 	protected void initChannel(SocketChannel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
-//		读超时时间为5s，写超时和读写超时为0，然后加入时间控制单元。如果5秒内没有收到消息，将会触发HeartBeatServerHandler.userEventTriggered()的方法，计数到达最大数，关闭客户端链接。
+		//		读超时时间为5s，写超时和读写超时为0，然后加入时间控制单元。如果5秒内没有收到消息，将会触发HeartBeatServerHandler.userEventTriggered()的方法，计数到达最大数，关闭客户端链接。
 		pipeline.addLast("handler",new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS))
 		.addLast("encode",new StringEncoder	())
 		.addLast("deocde",new StringDecoder())
 		.addLast(new HeartBeatServerHandler());
-		
-		
+
+
 	}
 
-	
+
 }
