@@ -34,20 +34,17 @@ public class flatMapTest {
 			  Arrays.stream(x).forEach(System.out::println);
 		  });*/
 		  
-		  
 	       //filter a stream of string[], and return a string[]?
 	        Stream<String[]> stream1 = stream.filter(x -> "a".equals(x.toString()));
-
 	        stream1.forEach(System.out::println);
 	        
 	        flatMap1();
-	        
-	        System.out.println("-----------");
 	        
 	        flatMap2();
 	}
 	
 	public static void flatMap1(){
+		System.out.println("------flatmap---------");
 		  String[][] data = new String[][]{{"a", "b"}, {"c", "d"}, {"e", "f"}};
 		  Stream<String[]> stream = Arrays.stream(data);
 		  
@@ -69,6 +66,7 @@ public class flatMapTest {
 	 * @since 1.0.0
 	 */
 	public static void flatMap2(){
+		System.out.println("--------flatmap2-----------");
 		 int[] intArray = {1, 2, 3, 4, 5, 6};
 		 Stream<int[]>  stream = Stream.of(intArray);
 		 IntStream intStream = stream.flatMapToInt(x -> Arrays.stream(x));

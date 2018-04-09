@@ -40,5 +40,18 @@ public class TestThreadPool {
                 e.printStackTrace();
             }
         }
+     
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+        	
+        	@Override
+        	public void run() {
+        		threadPool.shutdown();
+        		try {
+					threadPool.awaitTermination(30,TimeUnit.SECONDS);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+        	}
+        });
     }
 }

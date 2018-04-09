@@ -12,11 +12,16 @@
 
 package com.test.learn.jdk8.collections;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.test.learn.jdk8.vo.Staff;
 
 /**
  * TODO
@@ -60,8 +65,52 @@ public class SortMapTest {
 		.collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(oldValue,newValue) -> oldValue,LinkedHashMap::new));
 		System.out.println(valueMap);
 		
-				
+		sortEntity();
 		
-
+		System.out.println("-----------");
+		sortEntityThenComparing();
+	}
+	
+	
+	public static void sortEntity(){
+		Staff s = new Staff("kevin", 10, BigDecimal.valueOf(20));
+		Staff s1 = new Staff("kevin1", 10, BigDecimal.valueOf(30));
+		Staff s2 = new Staff("kevin2", 10, BigDecimal.valueOf(40));
+		Staff s3 = new Staff("kevin3", 10, BigDecimal.valueOf(50));
+		
+		List<Staff> list = Arrays.asList(s,s1,s2,s3);
+		
+		List<Staff> listResult = list.stream().sorted(Comparator.comparing(Staff::getAge)).collect(Collectors.toList());
+		listResult.forEach(p->{
+			System.out.println(p.getName()+ ":" + p.getAge());
+		});
+	}
+	
+	public static void sortEntityReversed(){
+		Staff s = new Staff("kevin", 10, BigDecimal.valueOf(20));
+		Staff s1 = new Staff("kevin1", 10, BigDecimal.valueOf(30));
+		Staff s2 = new Staff("kevin2", 10, BigDecimal.valueOf(40));
+		Staff s3 = new Staff("kevin3", 10, BigDecimal.valueOf(50));
+		
+		List<Staff> list = Arrays.asList(s,s1,s2,s3);
+		
+		List<Staff> listResult = list.stream().sorted(Comparator.comparing(Staff::getAge).reversed()).collect(Collectors.toList());
+		listResult.forEach(p->{
+			System.out.println(p.getName()+ ":" + p.getAge()+":"+p.getSalary());
+		});
+	}
+	
+	public static void sortEntityThenComparing(){
+		Staff s = new Staff("kevin", 10, BigDecimal.valueOf(20));
+		Staff s1 = new Staff("kevin1", 10, BigDecimal.valueOf(10));
+		Staff s2 = new Staff("kevin2", 40, BigDecimal.valueOf(60));
+		Staff s3 = new Staff("kevin3", 80, BigDecimal.valueOf(50));
+		
+		List<Staff> list = Arrays.asList(s,s1,s2,s3);
+		
+		List<Staff> listResult = list.stream().sorted(Comparator.comparing(Staff::getAge).thenComparing(Staff::getSalary)).collect(Collectors.toList());
+		listResult.forEach(p->{
+			System.out.println(p.getName()+ ":" + p.getAge()+":"+p.getSalary());
+		});
 	}
 }
