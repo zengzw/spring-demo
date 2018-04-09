@@ -34,5 +34,7 @@ public class RpcBootStrap {
 //		
 		  
 		ClassPathXmlApplicationContext fileSystemXmlApplicationContext = new ClassPathXmlApplicationContext("xml/applicationContext.xml");
+		
+		System.out.println("------first commit---");
 	}
 }
