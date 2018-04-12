@@ -13,7 +13,6 @@
 package com.test;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
  * 1： 把applicationContenxt xml 配置放开	<!-- <import resource="rpc-server-config.xml"/>  -->
