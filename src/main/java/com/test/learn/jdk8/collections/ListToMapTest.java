@@ -84,6 +84,8 @@ public class ListToMapTest {
 		
 		
 		distinct();
+		
+		nullAble();
 	}
 
 	public static void groupbyList(){
@@ -137,5 +139,11 @@ public class ListToMapTest {
 		    }  
 		    System.out.println(">>>>>"+e);  
 		}); 
+	}
+	
+	public static void nullAble(){
+		List<Object> list = null;
+	System.out.println("----nullAble------");
+		List<Object> list2 = Optional.ofNullable(list).filter(p -> p.equals("aaa")).get();
 	}
 }
