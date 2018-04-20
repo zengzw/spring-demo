@@ -253,7 +253,5 @@ public class HelloController extends BaseController{
         return "validate-group";
 
     }
-    public static void main(String[] args) {
-        System.out.println(0/1);
-    }
+
 }

@@ -88,6 +88,8 @@ public class StreamGroupbyTest {
         Map<Integer, Set<String>> resultMap = staffItems.stream().collect(
         		Collectors.groupingBy(Staff::getAge,
         				Collectors.mapping(Staff::getName, Collectors.toSet())));
+        
+        
         System.out.println(JSON.toJSONString(resultMap));
 	}
 }

@@ -14,7 +14,7 @@ package com.test.learn.consistenthashing.c_hasing2;
 
 /**
  * 
- * 这种情况下，要是删除服务器，或者减少服务器；缓存将大量的实效
+ * 
  * 
  * 
  * @author zengzw-1220
