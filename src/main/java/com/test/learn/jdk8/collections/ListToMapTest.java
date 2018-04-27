@@ -122,6 +122,7 @@ public class ListToMapTest {
 	}
 	
 	public static void distinct(){
+		System.out.println("---------distinct---------");
 		List<Object> list = new ArrayList<>();
 		list.add("aaa");
 		list.add("aaa");
@@ -132,6 +133,7 @@ public class ListToMapTest {
 		
 		System.out.println("----"+listReuslt.size());
 		
+		System.out.println("---list:"+list);
 		int i = 0;
 		list.stream().forEach(e ->{  
 		    if(e.equals("c")){  
