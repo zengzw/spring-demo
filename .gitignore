@@ -62,3 +62,6 @@ target/
 
 # STS (Spring Tool Suite)
 .springBeans
+.idea
+.idea/
+idea/
