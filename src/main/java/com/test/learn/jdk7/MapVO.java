@@ -10,7 +10,7 @@
  * @修改内容: 
  */
 
-package com.test.learn.jdk;
+package com.test.learn.jdk7;
 
 import java.util.HashMap;
 import java.util.Map;

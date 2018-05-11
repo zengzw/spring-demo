@@ -1,8 +1,8 @@
 /*
  * @Project Name: springmvcdemo
- * @File Name: Funcdation.java
+ * @File Name: ConcurrentHashMap.java
  * @Package Name: com.test.learn.jdk
- * @Date: 2018年4月27日下午2:38:34
+ * @Date: 2018年4月28日下午4:17:41
  * @Creator: zengzw-1220
  * @line------------------------------
  * @修改人: 
@@ -10,19 +10,18 @@
  * @修改内容: 
  */
 
-package com.test.learn.jdk;
+package com.test.learn.jdk7;
 
 /**
  * TODO
  * @author zengzw-1220
- * @date 2018年4月27日下午2:38:34
+ * @date 2018年4月28日下午4:17:41
  * @see
  */
-public class Funcdation {
+public class ConcurrentHashMapTest {
 	
 	public static void main(String[] args) {
-
-		int max = Math.max(2, 3);
-		System.out.println(max);
+		
+		
 	}
 }

@@ -24,20 +24,20 @@ public class Half_Interval_Search {
 	 */
 	public static int getIndex(int array[],int value,int maxLength,int minLength){
 		//定义 最大 和  最小
-		int max = maxLength == 0 ?array.length -1 : maxLength;
-		int min = minLength;
+		int start = maxLength == 0 ?array.length -1 : maxLength;
+		int end = minLength;
 		
 		//取中间值
-		int mid = (max + min) / 2;
+		int mid = (start + end) / 2;
 		
 		System.out.println("----mid:"+mid + " value:"+array[mid]);
 		if(array[mid] > value){
-			max = mid - 1;
-			return getIndex(array, value,max,min);
+			start = mid - 1;
+			return getIndex(array, value,start,end);
 			
 		}else if (array[mid] < value){
-			min = min + 1;
-			return getIndex(array, value,max,min);
+			end = end + 1;
+			return getIndex(array, value,start,end);
 		}else if(array[mid] == value) {
 			return mid;
 		}

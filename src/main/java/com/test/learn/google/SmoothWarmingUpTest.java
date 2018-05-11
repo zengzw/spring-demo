@@ -31,7 +31,7 @@ public class SmoothWarmingUpTest {
 		
 		RateLimiter limiter = RateLimiter.create(5, 1000,TimeUnit.SECONDS);
 		
-		for(int i = 0; i<5; i++){
+		for(int i = 0; i<20; i++){
 			limiter.acquire();
 			System.out.println("---");
 		}
