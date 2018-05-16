@@ -10,7 +10,7 @@
  * @修改内容: 
  */
 
-package com.test.learn.enums;
+package com.test.learn.jdk.enums;
 
 /**
  * TODO

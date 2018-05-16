@@ -12,7 +12,7 @@
 
 package com.test.learn.concurrent;
 
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -24,24 +24,23 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolExecutorTest {
 	public static void main(String[] args) {   
-		//
 		//15个任务的情况下：5个线程执行，再进来的，放到队列里头；队列5个满了之后，如果还多的，会再创建5个临时线程来执行其中的5个任务。
-/*//			ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 20, TimeUnit.SECONDS,
-//				new ArrayBlockingQueue<Runnable>(5));
-*/
-		//LinkedBlockingQueue  线程数只有5个，多余的任务添加到队列当中。当线程执行完了，再从队列中拿数据执行。
-		/*ThreadPoolExecutor executor = new ThreadPoolExecutor(50, 100, 20, TimeUnit.SECONDS,
-				new LinkedBlockingQueue<Runnable>());*/
+			ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 20, TimeUnit.SECONDS,
+				new ArrayBlockingQueue<Runnable>(5));
 
+		//LinkedBlockingQueue  线程数只有5个，多余的任务添加到队列当中。当线程执行完了，再从队列中拿数据执行。
+	/*	ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 20, TimeUnit.SECONDS,
+				new LinkedBlockingQueue<Runnable>());
+*/
 
 		//SynchronousQueue,在某次添加元素后必须等待其他线程取走后才能继续添加.
 		//当任务完成后，线程的大小 大于 线程池(corePoolSize)的大小时，将会把大于corePoolSize的线程回收，超过keepAliveTime的线程
-		ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 20, 20, TimeUnit.SECONDS,
-				new SynchronousQueue<Runnable>());
+		/*ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 20, 20, TimeUnit.SECONDS,
+				new SynchronousQueue<Runnable>());*/
 
 		
 
-		for(int i=0;i< 20;i++){
+		for(int i=0;i< 15;i++){
 			MyTask myTask = new MyTask(i);
 			executor.execute(myTask);
 
@@ -53,7 +52,13 @@ public class ThreadPoolExecutorTest {
 		//executor.shutdown();
 
 		while(true){
-			System.out.println(executor.getPoolSize());
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("poolSize:"+executor.getPoolSize() +" queueSize:"+executor.getQueue().size());
 		}
 
 	}

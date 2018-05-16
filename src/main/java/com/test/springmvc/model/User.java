@@ -21,7 +21,7 @@ import com.test.springmvc.customer.Forbidden;
  * @author zengzw
  * @date 2014年10月11日
  */
-public class User {
+public class User implements Cloneable{
     
     @Length(min=1,message="id.....")
     @Excel(name="注解Id")
@@ -70,6 +70,12 @@ public class User {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+    
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+    
+    	return super.clone();
     }
 
 }
