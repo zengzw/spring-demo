@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="111c8ffc-f549-4ff5-84b7-e294920fa990" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/redis/lua/RedisLuaLimit.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/springmvcdemo.iml" afterPath="$PROJECT_DIR$/springmvcdemo.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/calendar/CalendarTest1.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/calendar/HelloList.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/calendar/package-info.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/concurrent/ThreadPoolExecutorTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/concurrent/ThreadPoolExecutorTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/enums/DefineEnumInteface.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/enums/EnumCars.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/enums/package-info.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/springmvc/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/springmvc/model/User.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk/StaticCode.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk/StaticCode.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ThreadLocal.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ThreadLocal.java" pinned="false" current-in-tab="false">
         <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ThreadLocal.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
@@ -38,6 +27,16 @@
                 <element signature="e#8137#8138#0" expanded="true" />
                 <element signature="e#13015#13045#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractQueuedSynchronizer.java" pinned="false" current-in-tab="true">
+        <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1315">
+              <caret line="1201" column="0" lean-forward="true" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1080,19 +1079,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="1196" column="22" lean-forward="false" selection-start-line="1196" selection-start-column="22" selection-end-line="1196" selection-end-column="22" />
-          <folding>
-            <element signature="e#22933#22934#0" expanded="false" />
-            <element signature="e#22965#22966#0" expanded="false" />
-            <element signature="e#41392#41393#0" expanded="false" />
-            <element signature="e#41449#41450#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
@@ -1207,6 +1193,14 @@
             <element signature="e#8137#8138#0" expanded="true" />
             <element signature="e#13015#13045#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1315">
+          <caret line="1201" column="0" lean-forward="true" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

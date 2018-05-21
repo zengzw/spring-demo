@@ -23,7 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @date 2017年9月22日上午10:34:46
  * @see
  */
-public class TestThreadLocalRandom {
+public class ThreadLocalRandomTest {
 	
 	public static void main(String[] args) {
 

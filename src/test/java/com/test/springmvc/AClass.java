@@ -25,6 +25,8 @@ import scala.collection.generic.BitOperations.Int;
 public class AClass {
 
     public static void main(String[] args) throws InterruptedException{
+    	
+    	String a = "a";
 //        Unsafe unsafe = Unsafe.getUnsafe();
         
       /*  AtomicLong  a = new AtomicLong();

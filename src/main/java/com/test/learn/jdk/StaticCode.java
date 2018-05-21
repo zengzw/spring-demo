@@ -12,6 +12,7 @@
 
 package com.test.learn.jdk;
 
+
 /**
  * TODO
  * @author zengzw-1220
@@ -44,5 +45,10 @@ public class StaticCode {
 	public static void main(String[] args) {
 
 	    new StaticCode();
+	    
+	    
+	    System.out.println("a".hashCode());
+	    System.out.println("b".hashCode());
+	    System.out.println("c".hashCode());
 	}
 }

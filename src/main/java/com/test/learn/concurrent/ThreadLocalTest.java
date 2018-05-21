@@ -9,7 +9,7 @@ package com.test.learn.concurrent;
  * @author zengzw
  * @date 2017年2月10日
  */
-public class TestThreadLocal {
+public class ThreadLocalTest {
 
     ThreadLocal<String> threadLocal = new ThreadLocal<String>();
     
@@ -31,7 +31,7 @@ public class TestThreadLocal {
             @Override
             public void run() {
                 for(int i = 0; i<3; i++){
-                    TestThreadLocal testThreadLocal = new TestThreadLocal();
+                    ThreadLocalTest testThreadLocal = new ThreadLocalTest();
                     testThreadLocal.setValue("value:"+i);
                     
                     System.out.println(testThreadLocal.getValue());
@@ -46,7 +46,7 @@ public class TestThreadLocal {
             @Override
             public void run() {
                 for(int i = 10; i<13; i++){
-                    TestThreadLocal testThreadLocal = new TestThreadLocal();
+                    ThreadLocalTest testThreadLocal = new ThreadLocalTest();
                     testThreadLocal.setValue("value1:"+i);
                     
                     System.out.println(testThreadLocal.getValue());
