@@ -17,6 +17,7 @@ import java.util.TreeMap;
 
 /**
  * 一致性Hash
+ * https://zh.wikipedia.org/wiki/%E4%B8%80%E8%87%B4%E5%93%88%E5%B8%8C
  * 
  * @author zengzw-1220
  * @date 2018年3月14日上午10:43:58

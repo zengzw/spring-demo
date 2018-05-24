@@ -86,6 +86,7 @@ public class CopyOnWriteArrayListTest1 {
 			executorService.execute(new ReadTask(list));
 			executorService.execute(new WriteTask(list, i));
 		}
+		
 		executorService.shutdown();
 	}
 

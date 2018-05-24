@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="111c8ffc-f549-4ff5-84b7-e294920fa990" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk/StaticCode.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk/StaticCode.java" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/concurrent/CopyOnWriteArrayListTest1.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/concurrent/CopyOnWriteArrayListTest1.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk7/proxy/Test.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/learn/jdk7/proxy/Test.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/test/learn/rpc/util/package-info.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +38,13 @@
         <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1315">
-              <caret line="1201" column="0" lean-forward="true" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
-              <folding />
+              <caret line="1201" column="0" lean-forward="false" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
+              <folding>
+                <element signature="e#61323#61331#0" expanded="true" />
+                <element signature="e#61946#61954#0" expanded="true" />
+                <element signature="e#62618#62626#0" expanded="true" />
+                <element signature="e#88061#88069#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,7 +144,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -538,7 +546,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1199,8 +1207,13 @@
     <entry file="jar://E:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1315">
-          <caret line="1201" column="0" lean-forward="true" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
-          <folding />
+          <caret line="1201" column="0" lean-forward="false" selection-start-line="1201" selection-start-column="0" selection-end-line="1201" selection-end-column="0" />
+          <folding>
+            <element signature="e#61323#61331#0" expanded="true" />
+            <element signature="e#61946#61954#0" expanded="true" />
+            <element signature="e#62618#62626#0" expanded="true" />
+            <element signature="e#88061#88069#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
