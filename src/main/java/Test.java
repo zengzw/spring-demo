@@ -17,10 +17,22 @@
  * @see
  */
 public class Test {
-	
-	public void say(){
-		synchronized (this) {
-			System.out.println("---");
-		}
+	public void testFinal(){
+		int intT = 1;
+		final int intFinal = 1;
+		final String finalA = "abc";
+
+		String result = test1();
+		switch (result){
+            case  "a":
+
+                default:
+
+        }
+
 	}
+
+	public String test1(){
+	    return "result";
+    }
 }

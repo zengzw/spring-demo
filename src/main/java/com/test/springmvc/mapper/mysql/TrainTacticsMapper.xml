@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.springmvc.mapper.TrainTacticsMapper">
+  <resultMap id="BaseResultMap" type="com.test.springmvc.model.TrainTactics">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sport_type_id" jdbcType="INTEGER" property="sportTypeId" />
+    <result column="tactic_type_id" jdbcType="INTEGER" property="tacticTypeId" />
+    <result column="tactic_name" jdbcType="VARCHAR" property="tacticName" />
+    <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+    <result column="org_user_id" jdbcType="VARCHAR" property="orgUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_id" jdbcType="VARCHAR" property="modifyId" />
+     <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List">
+    id, sport_type_id, tactic_type_id, tactic_name, delete_flag, org_user_id, create_time, 
+    create_id, content,modify_time, modify_id
+  </sql>
+  
+  
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from train_tactics
+    where id = #{id,jdbcType=INTEGER}
+    and delete_flag = 0
+  </select>
+
+  
+  <!-- 根据名称获取战术信息 -->
+  <!-- @date 2018年3月8日 -->
+  <!-- @author zengzw-1220 -->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from train_tactics
+    where tactic_name = #{tacticName,jdbcType=VARCHAR}
+    and org_user_id = #{orgUserId,jdbcType=VARCHAR}
+    and delete_flag = 0
+    
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from train_tactics
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.test.springmvc.model.TrainTactics">
+    insert into train_tactics (id, sport_type_id, tactic_type_id, 
+      tactic_name, delete_flag, org_user_id, 
+      create_time, create_id, modify_time, 
+      modify_id, content)
+    values (#{id,jdbcType=INTEGER}, #{sportTypeId,jdbcType=INTEGER}, #{tacticTypeId,jdbcType=INTEGER}, 
+      #{tacticName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=TINYINT}, #{orgUserId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{modifyId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.test.springmvc.model.TrainTactics">
+    insert into train_tactics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sportTypeId != null">
+        sport_type_id,
+      </if>
+      <if test="tacticTypeId != null">
+        tactic_type_id,
+      </if>
+      <if test="tacticName != null">
+        tactic_name,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="orgUserId != null">
+        org_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyId != null">
+        modify_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sportTypeId != null">
+        #{sportTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="tacticTypeId != null">
+        #{tacticTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="tacticName != null">
+        #{tacticName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="orgUserId != null">
+        #{orgUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null">
+        #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.springmvc.model.TrainTactics">
+    update train_tactics
+    <set>
+      <if test="sportTypeId != null">
+        sport_type_id = #{sportTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="tacticTypeId != null">
+        tactic_type_id = #{tacticTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="tacticName != null">
+        tactic_name = #{tacticName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="orgUserId != null">
+        org_user_id = #{orgUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null">
+        modify_id = #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.test.springmvc.model.TrainTactics">
+    update train_tactics
+    set sport_type_id = #{sportTypeId,jdbcType=INTEGER},
+      tactic_type_id = #{tacticTypeId,jdbcType=INTEGER},
+      tactic_name = #{tacticName,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      org_user_id = #{orgUserId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.test.springmvc.model.TrainTactics">
+    update train_tactics
+    set sport_type_id = #{sportTypeId,jdbcType=INTEGER},
+      tactic_type_id = #{tacticTypeId,jdbcType=INTEGER},
+      tactic_name = #{tacticName,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      org_user_id = #{orgUserId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

@@ -55,18 +55,6 @@
 		</property>
 	</bean>
 
-	<!-- 加载配置配置文件，这样可以在xml中读取配置文件内容 -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:/configuration/messages.properties</value>
-				<value>classpath:/configuration/redis.properties</value>
-				<value>classpath:/configuration/rpc_client_config.properties</value>
-				<value>classpath:/configuration/rpc_server_config.properties</value>
-			</list>
-		</property>
-	</bean>
 	
 	
 	<!-- 拦截器 -->

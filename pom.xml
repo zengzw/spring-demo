@@ -369,6 +369,12 @@
 			<artifactId>mybatis-paginator</artifactId>
 			<version>1.2.15</version>
 		</dependency>
+		<!-- 数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.18</version>
+		</dependency>
 
 		<dependency>
 			<groupId>xml-apis</groupId>
@@ -581,7 +587,14 @@
 			<artifactId>cachesize</artifactId>
 			<version>0.2.1</version>
 		</dependency>
-
+		
+		<!-- mysql connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 
