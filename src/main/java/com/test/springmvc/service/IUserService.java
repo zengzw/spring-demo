@@ -4,8 +4,6 @@
  */
 package com.test.springmvc.service;
 
-import org.springframework.stereotype.Service;
-
 import com.test.springmvc.model.User;
 
 /**

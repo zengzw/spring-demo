@@ -59,13 +59,13 @@ public class CustomerBean implements BeanPostProcessor,BeanNameAware,Initializin
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
-		System.out.println("BeanPostProcessor#before-----"+beanName +" :"+JSON.toJSONString(bean));
+		System.out.println("BeanPostProcessor#before-----"+beanName +" :"+bean);
 		return bean;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		System.out.println("BeanPostProcessor#after-----"+beanName +" :"+JSON.toJSONString(bean));
+		System.out.println("BeanPostProcessor#after-----"+beanName +" :"+bean);
 		
 		return bean;
 	}

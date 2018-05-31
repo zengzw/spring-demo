@@ -36,68 +36,7 @@
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
 
 
-<!-- 加载配置配置文件，这样可以在xml中读取配置文件内容 -->
-  <context:property-placeholder   location="classpath*:configuration/*.properties" />
-  
-	<!-- <bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:/configuration/*.properties</value>
-			</list>
-		</property>
-	</bean> -->
-	
-	    <!-- oracle数据源 -->
-    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc.url}"/>
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="5"/>
-        <property name="minIdle" value="${jdbc.minIdle}"/>
-        <property name="maxActive" value="${jdbc.maxActive}"/>
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000"/>
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000"/>
-        <property name="validationQuery" value="SELECT 'x'"/>
-        <property name="testWhileIdle" value="true"/>
-        <property name="testOnBorrow" value="false"/>
-        <property name="testOnReturn" value="false"/>
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="false"/>
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="50"/>
-        <!-- 配置监控统计拦截的filters -->
-        <property name="filters" value="config"/>
-        <property name="connectionProperties" value="config.file=${db.pwd}"/>
-        <!-- 定期把监控数据输出到日志中 -->
-        <property name="timeBetweenLogStatsMillis" value="300000"/>
-    </bean>
-	
-    
-    
-    <!-- mybatis 的 SqlSessionFactoryBean -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="druidDataSource"/>
-        <property name="mapperLocations">
-            <array>
-                <value>classpath:com/test/springmvc/mapper/mysql/*.xml</value>
-            </array>
-        </property>
-        <!-- 别名：resultMap中使用 -->
-        <property name="configLocation" value="classpath:xml/mybatis-config.xml"></property>
-    </bean>
-    
-    <!-- mybatis 自动扫描SQL映射文件/接口 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 扫描所有映射接口类 -->
-        <property name="basePackage" value="com.test.springmvc.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
-    
-
+	<import resource="application-db.xml"/>
 <!-- 	
 	
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

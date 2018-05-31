@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public void getUserList(User user) {
-        throw new BusinessRuntimeException("00001","default message");
+      //  throw new BusinessRuntimeException("00001","default message");
     }
 
 }
