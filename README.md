@@ -99,20 +99,20 @@
 - 单元测试
 
 ## ThreadPool
-###基础参数
+### 基础参数
 我们先来总结一下线程池的这些参数，后面再上源码就好理解了 
 core,maxPoolSize,keepalive 
 
-###执行任务时流程
+### 执行任务时流程
 1. 如果线程池中线程数量 < core，新建一个线程执行任务； 
 2. 如果线程池中线程数量 >= core ,则将任务放入任务队列 
 3. 如果线程池中线程数量 >= core 且 < maxPoolSize，且任务队列满了，则创建新的线程； 
 4. 如果线程池中线程数量 > core ,当线程空闲时间超过了keepalive时，则会销毁线程；由此可见线程池的队列如果是无界队列，那么设置线程池最大数量是无效的；
 
-###源码分析java.util.concurrent.ThreadPoolExecutor
+### 源码分析java.util.concurrent.ThreadPoolExecutor
 这是最常用的一个类，我们建立的线程池大部分都是用它实现的，所以重点来分析下这个类的源码；
 
-###构造方法
+### 构造方法
 它的构造方法有很多，但是最终调用的都是下面这个构造方法
 ```
     public ThreadPoolExecutor(int corePoolSize,
@@ -138,7 +138,7 @@ core,maxPoolSize,keepalive
     }
 ```
 
-###参数说明
+### 参数说明
 
 - corePoolSize（核心线程池大小）：当提交一个任务到线程池时，线程池会创建一个线程来执行任务，即使其他空闲的基本线程能够执行新任务也会创建线程，等到需要执行的任务数大于线程池基本大小时就不再创建。如果调用了线程池的prestartAllCoreThreads方法，线程池会提前创建并启动所有基本线程。
 
@@ -160,10 +160,11 @@ core,maxPoolSize,keepalive
 - RejectedExecutionHandler（饱和策略）：当队列和线程池都满了，说明线程池处于饱和状态，那么必须采取一种策略处理提交的新任务。
 
    	-  这个策略默认情况下是AbortPolicy，表示无法处理新任务时抛出异常。以下是提供的四种策略。
-	    1.AbortPolicy：直接抛出异常。默认策略
-	    2.CallerRunsPolicy：只用调用者所在线程来运行任务。
-	    3.DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务。
-	    4.DiscardPolicy：不处理，丢弃掉。
-    	当然也可以根据应用场景需要来实现RejectedExecutionHandler接口自定义策略。如记录日志或持久化不能处理的任务。
-		
+   	
+    1.AbortPolicy：直接抛出异常。默认策略
+    2.CallerRunsPolicy：只用调用者所在线程来运行任务。
+    3.DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务。
+    4.DiscardPolicy：不处理，丢弃掉。
+	当然也可以根据应用场景需要来实现RejectedExecutionHandler接口自定义策略。如记录日志或持久化不能处理的任务。
+	
 		
