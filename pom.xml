@@ -587,14 +587,21 @@
 			<artifactId>cachesize</artifactId>
 			<version>0.2.1</version>
 		</dependency>
-		
+
 		<!-- mysql connector -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+
 	</dependencies>
 
 

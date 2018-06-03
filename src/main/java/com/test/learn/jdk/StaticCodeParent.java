@@ -19,33 +19,33 @@ package com.test.learn.jdk;
  * @date 2018年5月15日上午10:48:21
  * @see
  */
-public class StaticCode extends StaticCodeParent{  
+public class StaticCodeParent {  
 	int num=9;
 	//构造方法 3
-	StaticCode(){
-		System.out.println("---construct---");
-		System.out.println("b");
+	StaticCodeParent(){
+		System.out.println("parent ---construct---");
+		System.out.println(" parent b");
 	}
 
 	//静态代码块  1
 	static{
-		System.out.println("--static{}---");
-		System.out.println("a");
+		System.out.println("parent--static{}---");
+		System.out.println("parent a");
 	}
 
 	//构造代码块 2
 	{
-		System.out.println("-----{}----");
-		System.out.println("c");
+		System.out.println("parent-----{}----");
+		System.out.println(" parent c");
 	}
 
-	StaticCode(int x){
+	StaticCodeParent(int x){
 		System.out.println("d");
 	}
 	
 	public static void main(String[] args) {
 
-	    new StaticCode();
+	    new StaticCodeParent();
 	    
 	    
 	    System.out.println("a".hashCode());

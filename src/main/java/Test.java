@@ -17,6 +17,25 @@
  * @see
  */
 public class Test {
+	
+	
+	public static void main(String[] args) {
+		System.out.println(trycatchfinally());
+	}
+	
+	public static int trycatchfinally(){
+		
+		try{
+			return 1;
+		}catch(Exception exception){
+			exception.printStackTrace();
+			return 2;
+		}finally {
+			System.out.println("finally");
+			return 3;
+		}
+	}
+	
 	public void testFinal(){
 		int intT = 1;
 		final int intFinal = 1;

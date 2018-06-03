@@ -21,15 +21,24 @@ package com.test.learn.jdk.threadlocal;
  */
 public class ThreadLocalTest {
 	
-	ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>(){
-		protected Integer initialValue() {
-			return 0;
+	final static ThreadLocal<String> threadLocal = new ThreadLocal<String>(){
+		protected String initialValue() {
+			return null;
 		};
 	};
 	
 	
 	
 	public static void main(String[] args) {
-		
+		for(int i = 0; i < 10; i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					System.out.println(Thread.currentThread().getName()+":"+threadLocal.get());
+					threadLocal.set(Thread.currentThread().getName());
+				}
+			}).start();
+		}
 	}
 }
