@@ -157,9 +157,7 @@ core,maxPoolSize,keepalive
 		3.SynchronousQueue：一个不存储元素的阻塞队列。每个插入操作必须等到另一个线程调用移除操作，否则插入操作一直处于阻塞状态，吞吐量通常要高于LinkedBlockingQueue，静态工厂方法Executors.newCachedThreadPool使用了这个队列。
 		4.PriorityBlockingQueue：一个具有优先级得无限阻塞队列。
 
-- RejectedExecutionHandler（饱和策略）：当队列和线程池都满了，说明线程池处于饱和状态，那么必须采取一种策略处理提交的新任务。
-
-   	-  这个策略默认情况下是AbortPolicy，表示无法处理新任务时抛出异常。以下是提供的四种策略。
+- RejectedExecutionHandler（饱和策略）：当队列和线程池都满了，说明线程池处于饱和状态，那么必须采取一种策略处理提交的新任务。这个策略默认情况下是AbortPolicy，表示无法处理新任务时抛出异常。以下是提供的四种策略。
    	
     1.AbortPolicy：直接抛出异常。默认策略
     2.CallerRunsPolicy：只用调用者所在线程来运行任务。

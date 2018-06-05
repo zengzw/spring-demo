@@ -34,7 +34,6 @@ public class RedisLockImpl implements IRedisLock{
 	    private RedisTemplate<Object, Object> redisTemplate;
 
 	    public RedisLockImpl(RedisTemplate<Object, Object> redisTemplate){
-	        super();
 	        this.redisTemplate = redisTemplate;
 	    }
 
@@ -47,6 +46,8 @@ public class RedisLockImpl implements IRedisLock{
 	        Long value = System.currentTimeMillis() + EXPIRE + 1;
 	        boolean locked = false;
 	        RedisConnection redisConnection = getRedisConnection();
+	        
+	        
 	        try{
 	            if(redisConnection.setNX(lock.getBytes(), Long.toString(value).getBytes())){
 	                //获取到锁

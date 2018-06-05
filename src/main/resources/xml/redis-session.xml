@@ -38,11 +38,12 @@
 </bean>
  
 <!-- 将session放入redis -->
-<bean id="redisHttpSessionConfiguration"
+<!-- <bean id="redisHttpSessionConfiguration"
 class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
     <property name="maxInactiveIntervalInSeconds" value="1800" />
-</bean>
+</bean> -->
+
     <!-- 让Spring Session不再执行config命令 -->
-<util:constant static-field="org.springframework.session.data.redis.config.ConfigureRedisAction.NO_OP"/>
+<!-- <util:constant static-field="org.springframework.session.data.redis.config.ConfigureRedisAction.NO_OP"/> -->
 
 </beans>
