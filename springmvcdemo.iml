@@ -88,6 +88,25 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.7" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.18" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.alibaba:jconsole:1.8.0">
+        <CLASSES>
+          <root url="jar://E:/Program Files/Java/jdk1.8.0_144/lib/jconsole.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.alibaba:tools:1.8.0">
+        <CLASSES>
+          <root url="jar://E:/Program Files/Java/jdk1.8.0_144/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:15.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:activemq-all:5.14.3" level="project" />
@@ -97,7 +116,6 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-jobtracker:1.6.8-beta1" level="project" />
     <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-core:1.6.8-beta1" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
     <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-tasktracker:1.6.8-beta1" level="project" />
     <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-jobclient:1.6.8-beta1" level="project" />
     <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-monitor:1.6.8-beta1" level="project" />
@@ -107,10 +125,10 @@
     <orderEntry type="library" name="Maven: org.mapdb:mapdb:3.0.0-beta5" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections-api:7.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections-api:7.1.2" level="project" />
     <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections:7.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections-forkjoin:7.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections:7.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.collections:eclipse-collections-forkjoin:7.1.2" level="project" />
     <orderEntry type="library" name="Maven: net.jpountz.lz4:lz4:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.mapdb:elsa:3.0.0-M4" level="project" />
     <orderEntry type="library" name="Maven: org.quartz-scheduler:quartz:2.2.2" level="project" />
@@ -148,5 +166,9 @@
     <orderEntry type="library" name="Maven: fr.ujm.tse.lt2c.satin:cachesize:0.2.1" level="project" />
     <orderEntry type="library" name="Maven: ru.concerteza.util:ctz-utils:2.26" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.26" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:dubbo:2.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.netty:netty:3.2.5.Final" level="project" />
   </component>
 </module>
