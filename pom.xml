@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springmvc.demo</groupId>
@@ -14,13 +15,13 @@
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.0.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
-		<org.slf4j-version>1.7.5</org.slf4j-version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<cglib.version>2.2.2</cglib.version>
 		<activemq.version>5.14.3</activemq.version>
 		<lts.version>1.6.8-beta1</lts.version>
 		<leveldbjni.version>1.8</leveldbjni.version>
 		<curator.version>2.9.1</curator.version>
-		<netty.version>4.0.20.Final</netty.version>
+		<netty.version>4.1.28.Final</netty.version>
 		<dbutils.version>1.6</dbutils.version>
 		<druid.version>1.0.14</druid.version>
 		<mysql.version>5.1.26</mysql.version>
@@ -257,6 +258,12 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+
 
 		<!-- @Inject -->
 		<dependency>
@@ -602,6 +609,24 @@
 			<version>2.6.1</version>
 		</dependency>
 
+		<!-- ES -->
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>6.2.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/x-pack-transport -->
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>transport</artifactId>
+			<version>6.2.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch-analysis-ik -->
+		<!-- <dependency> <groupId>org.elasticsearch</groupId> <artifactId>elasticsearch-analysis-ik</artifactId> 
+			<version>6.2.4</version> </dependency> -->
+
 	</dependencies>
 
 
@@ -680,7 +705,8 @@
 				<configuration>
 					<!-- <webAppSourceDirectory>webapp</webAppSourceDirectory> -->
 					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+						<connector
+							implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8010</port>
 						</connector>
 					</connectors>
