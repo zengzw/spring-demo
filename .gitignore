@@ -65,3 +65,4 @@ target/
 .idea
 .idea/
 idea/
+.idea/*.xml

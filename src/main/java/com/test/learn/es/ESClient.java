@@ -52,9 +52,7 @@ public class ESClient {
 
 		// 创建查询索引
 		SearchRequestBuilder searchRequestBuilder = client
-				.prepareSearch("myindex");
-		// 设置查询索引类型
-		searchRequestBuilder.setTypes("post");
+				.prepareSearch(INDICES).setTypes(TYPE);
 		// 设置查询类型
 		// 1.SearchType.DFS_QUERY_THEN_FETCH = 精确查询
 		// 2.SearchType.SCAN = 扫描查询,无序
