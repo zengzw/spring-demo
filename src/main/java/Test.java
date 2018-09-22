@@ -18,9 +18,22 @@
  */
 public class Test {
 	
+	private void outMethod(){
+		int param = 1;
+		
+		class innerClass{
+			public void innerMethod(){
+				System.out.println("innerMethod...."+param);
+			}
+		}
+	}
 	
 	public static void main(String[] args) {
 		System.out.println(trycatchfinally());
+		
+		Test test = new Test();
+		test.outMethod();
+	
 	}
 	
 	public static int trycatchfinally(){
