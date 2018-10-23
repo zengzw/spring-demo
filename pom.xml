@@ -619,6 +619,19 @@
 			<version>2.6.1</version>
 		</dependency>
 
+<<<<<<< HEAD
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+=======
 		<!-- ES -->
 		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
 		<dependency>
@@ -636,6 +649,7 @@
 		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch-analysis-ik -->
 		<!-- <dependency> <groupId>org.elasticsearch</groupId> <artifactId>elasticsearch-analysis-ik</artifactId> 
 			<version>6.2.4</version> </dependency> -->
+>>>>>>> 275f69b72a1a58df69cd7e2cb2d63ef4a18c49f7
 
 
 	</dependencies>

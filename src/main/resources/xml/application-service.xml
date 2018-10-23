@@ -39,7 +39,7 @@
   <context:property-placeholder   location="classpath*:configuration/*.properties" />
   
 
-	<import resource="application-db.xml"/>
+	<!-- <import resource="application-db.xml"/> -->
 <!-- 	
 	
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

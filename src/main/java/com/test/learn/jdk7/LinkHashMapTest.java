@@ -39,6 +39,8 @@ public class LinkHashMapTest {
 		linkedHashMap2.put("c", "c value");
 		
 		linkedHashMap2.get("a");
+		linkedHashMap2.get("a");
+		linkedHashMap2.get("a");
 		
 		System.out.println(linkedHashMap2);
 	}

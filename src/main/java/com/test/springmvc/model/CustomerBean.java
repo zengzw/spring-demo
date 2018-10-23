@@ -18,6 +18,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -34,6 +35,7 @@ import com.alibaba.fastjson.JSON;
  */
 public class CustomerBean implements BeanPostProcessor,BeanNameAware,InitializingBean,DisposableBean,BeanFactoryAware
 ,ApplicationContextAware,ApplicationListener{
+	
 
 	public CustomerBean() {
 		
