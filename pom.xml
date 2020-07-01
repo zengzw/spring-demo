@@ -33,7 +33,7 @@
 		<groovy.version>2.4.5</groovy.version>
 		<jackson.version>2.6.3</jackson.version>
 		<aspectj.version>1.7.2</aspectj.version>
-		<quartz.version>2.2.2</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 	</properties>
 
 
