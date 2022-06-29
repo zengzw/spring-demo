@@ -27,7 +27,7 @@
 		<mysql.version>5.1.47</mysql.version>
 		<sleepycat.version>5.0.73</sleepycat.version>
 		<rocksdbjni.version>3.10.1</rocksdbjni.version>
-		<mina.version>2.0.9</mina.version>
+		<mina.version>2.0.22</mina.version>
 		<hessian.version>4.0.38</hessian.version>
 		<mapdb.version>2.0-beta10</mapdb.version>
 		<groovy.version>2.4.5</groovy.version>
